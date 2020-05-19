@@ -1,54 +1,19 @@
-﻿$(document).ready(function () {
-});
-function validarPassword() {
-    //Obtener los controles a validar
+﻿
+$(document).ready(function () {
     var txtContraseña = document.getElementById("contenido_txtPassword");
     var txtConfirmarContraseña = document.getElementById("contenido_txtConfirmarPassword");
-    var validarPassword = /(?=^.{8,16}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/;
-    try {
-        //Limpiar los estilos de validación
-        txtContraseña.classList.remove('is-valid', 'is-invalid');
-        txtConfirmarContraseña.classList.remove('is-valid', 'is-invalid');
-        //Obtener los valores ingresados en los controles
-        var contraseña = txtContraseña.value.trim();
-        var confirmar_contraseña = txtConfirmarContraseña.value.trim();
-        //Verificar si se ha ingresado datos en ellos
-        if (contraseña.length < 8 || confirmar_contraseña < 8 || contraseña != confirmar_contraseña || !validarPassword.test(contraseña) || !validarPassword.test(confirmar_contraseña)) {
-            if (contraseña.length < 8 || contraseña.length > 16) {
-                txtContraseña.classList.add('is-invalid');
-            } else {
-                txtContraseña.classList.add('is-valid');
-            }
-            if (confirmar_contraseña.length < 8 || confirmar_contraseña.length > 16) {
-                txtConfirmarContraseña.classList.add('is-invalid');
-            } else {
-                txtConfirmarContraseña.classList.add('is-valid');
-            }
-            if (contraseña != confirmar_contraseña) {
-                txtConfirmarContraseña.classList.add('is-invalid');
-            } else {
-                txtConfirmarContraseña.classList.add('is-valid');
-            }
-            if (!validarPassword.test(contraseña)) {
-                txtContraseña.classList.add('is-invalid');
-            } else {
-                txtContraseña.classList.add('is-valid');
-            }
-            if (!validarPassword.test(confirmar_contraseña)) {
-                txtConfirmarContraseña.classList.add('is-invalid');
-            } else {
-                txtConfirmarContraseña.classList.add('is-valid');
-            }
 
-            //Cancelar el submit
-            event.preventDefault();
+    var contraseña = txtContraseña.value.trim();
+    var confirmar_contraseña = txtConfirmarContraseña.value.trim();
 
-        }
-        else {
+    $("#btncambiar").click(function () {
+        $("#FrmCambiarPassword").data('bootstrapValidator').validate();
+
+        if ($("#FrmCambiarPassword").data('bootstrapValidator').isValid()) {
             var email = localStorage.getItem("email");
             var password = $("#contenido_txtPassword").val();
             var email_usuario = $("#contenido_txtEmailUsuario").val();
-            //var tipo_usuario = $("#contenido_txtTipoUsuario").val();
+            var tipo_usuario = $("#contenido_txtTipoUsuario").val();
             if (email != null) {
                 var datos = "{ 'email' : '" + email + "','password' : '" + password + "'}";
                 cambiarPassword(datos);
@@ -57,17 +22,60 @@ function validarPassword() {
                 var datos = "{ 'email' : '" + email_usuario + "','password' : '" + password + "'}";
                 cambiarPassword(datos);
             }
-
+        } else {
+            alert('con errores');
         }
-    } catch (e) {
-        alert("Error:"+e);
-        //mandar mensaje
-        document.getElementById('contenido_divMsg').style.display = 'block';
-        //cancelar submit
-        event.preventDefault();
-        //salirme del método
-    }
-}
+    });
+
+    $('#FrmCambiarPassword').bootstrapValidator({
+        framework: 'bootstrap',
+        excluded: [':disabled', ':hidden'],
+        fields: {
+            ctl00$contenido$txtPassword: {
+                message: 'Contraseña no valida',
+                validators: {
+                    notEmpty: {
+                        message: 'El Campo es obligatorio'
+                    },
+                    identical: {
+                        field: 'ctl00$contenido$txtConfirmarPassword',
+                        message: 'Las contraseñas no son iguales'
+                    },
+                    regexp: {
+                        regexp: /(?=^.{8,16}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/,
+                        message: 'Debe tener entre 8 y 16 caracteres, al menos un dígito, al menos una minúscula, al menos una mayúscula'
+                    }
+                }
+            }, ctl00$contenido$txtConfirmarPassword: {
+                message: 'Contraseña no valida',
+                validators: {
+                    notEmpty: {
+                        message: 'El Campo es obligatorio'
+                    },
+                    identical: {
+                        field: 'ctl00$contenido$txtPassword',
+                        message: 'Las contraseñas no son iguales'
+                    },
+                    regexp: {
+                        regexp: /(?=^.{8,16}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/,
+                        message: 'Debe tener entre 8 y 16 caracteres, al menos un dígito, al menos una minúscula, al menos una mayúscula'
+                    }
+                }
+            }
+        }
+    });
+
+    $("#btnAceptarInfo").click(function () {
+        window.location.assign("FrmContenedor.aspx")
+    });
+    $("#btncancelar").click(function () {
+        localStorage.removeItem("email");
+        window.location.assign("FrmContenedor.aspx");
+    });
+
+});
+
+
 function cambiarPassword(datos) {
     $.ajax({
         type: 'POST',

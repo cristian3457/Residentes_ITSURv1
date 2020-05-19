@@ -1,4 +1,11 @@
 ﻿$(document).ready(function () {
+
+    $("#btnRegistrar").click(function () {
+        localStorage.removeItem("id_empresa");
+        $("#divContenido").load("FrmRegistrarDatos.aspx");
+    });
+
+
     let tabla = $('#grvLista');
     tabla.empty();
     cargarDatos();

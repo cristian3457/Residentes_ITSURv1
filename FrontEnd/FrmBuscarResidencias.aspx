@@ -37,15 +37,15 @@
             <div class="buscador">
                 <h2 class="form-row justify-content-center pt-4">BUSCA EL LUGAR PARA REALIZAR TUS RESIDENCIAS</h2>
                 <div class="row justify-content-center">
-                    <div class="col-md-3 mt-5 text-right">
-                        <label for="ddlMunicipioBusqueda" class="mt-2">Seleccione un Estado:</label>
+                    <div class="col-md-2 mt-5 text-right text-success">
+                        <label for="ddlEstadoBusqueda" class="mt-2">Seleccione un Estado:</label>
                     </div>
-                    <asp:DropDownList ID="DropDownList1" runat="server" class="form-control col-md-2 mt-5" AutoPostBack="false"></asp:DropDownList>
+                    <asp:DropDownList ID="ddlEstadoBusqueda" runat="server" class="form-control col-md-2 mt-5" AutoPostBack="false"></asp:DropDownList>
                     <div class="invalid-feedback">
                         Debes seleccionar una ciudad para realizar la busqueda
                     </div>
-                    <div class="col-md-3 mt-5 text-right">
-                        <label for="ddlMunicipioBusqueda" class="mt-2">BUSCAR POR MUNICIPIO:</label>
+                    <div class="col-md-2 mt-5 text-right">
+                        <label for="ddlMunicipioBusqueda" class="mt-2 text-success">Seleccione un Municipio:</label>
                     </div>
                     <asp:DropDownList ID="ddlMunicipioBusqueda" runat="server" class="form-control col-md-2 mt-5" AutoPostBack="false"></asp:DropDownList>
                     <div class="invalid-feedback">

@@ -17,6 +17,11 @@ namespace FrontEnd
                 ddlMunicipioBusqueda.DataValueField = "id_municipio";
                 ddlMunicipioBusqueda.DataTextField = "municipio";
                 ddlMunicipioBusqueda.DataBind();
+                ddlEstadoBusqueda.DataSource = new EstadosDao().getAll();
+                ddlEstadoBusqueda.DataValueField = "id_estado";
+                ddlEstadoBusqueda.DataTextField = "estado";
+                ddlEstadoBusqueda.DataBind();
+
             }
         }
     }

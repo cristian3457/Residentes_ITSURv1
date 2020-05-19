@@ -36,7 +36,6 @@ function Eliminar(btn) {
 }
 function eliminar(id) {
     var datos = "{ 'id' : '" + id + "'}";
-    alert(datos);
     $.ajax({
         type: 'POST',
         url: 'ws/WSUsuarios.asmx/delete',

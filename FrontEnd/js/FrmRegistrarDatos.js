@@ -1,6 +1,5 @@
 ﻿
-function validar(evento) {
-    //Obtener los controles a validar
+$(document).ready(function () {
     var txtEmpresa = document.getElementById("contenido_txtEmpresa");
     var txtEmail = document.getElementById("contenido_txtEmail");
     var txtDomicilio = document.getElementById("contenido_txtDomicilio");
@@ -12,102 +11,37 @@ function validar(evento) {
     var rbtnRamoIndustrial = document.getElementById("contenido_RadioIndustrial");
     var rbtnRamoServicios = document.getElementById("contenido_RadioServicios");
     var rbtnRamoOtro = document.getElementById("contenido_RadioOtro");
-    var id_estado = document.getElementById('contenido_ddlEstado').value;
-    var id_municipio = document.getElementById('contenido_ddlMunicipio').value;
+
     var validarCP = /(^([0-9]{5,5})|^)$/
     var validarEmail = new RegExp("^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\\.([a-zA-Z]{2,4})+$");
     var validarTelefono = /^[(]{0,1}[+]*[0-9]{2,2}[)]{0,1}[-\s\./0-9]*$/g;
-    try {
-        //Limpiar los estilos de validación
-        txtEmpresa.classList.remove('is-valid', 'is-invalid');
-        txtEmail.classList.remove('is-valid', 'is-invalid');
-        txtCP.classList.remove('is-valid', 'is-invalid');
-        txtDomicilio.classList.remove('is-valid', 'is-invalid');
-        txtTelefono.classList.remove('is-valid', 'is-invalid');
-        txtMision.classList.remove('is-valid', 'is-invalid');
-        rbtnSectorPublico.classList.remove('is-valid', 'is-invalid');
-        rbtnSectorPrivado.classList.remove('is-valid', 'is-invalid');
-        rbtnRamoServicios.classList.remove('is-valid', 'is-invalid');
-        rbtnRamoIndustrial.classList.remove('is-valid', 'is-invalid');
-        rbtnRamoOtro.classList.remove('is-valid', 'is-invalid');
-        //Obtener los valores ingresados en los controles
-        var empresa = txtEmpresa.value.trim();
-        var email = txtEmail.value.trim();
-        var cp = txtCP.value.trim();
-        var domicilio = txtDomicilio.value.trim();
-        var telefono = txtTelefono.value.trim();
-        var mision = txtMision.value.trim();
-        var sectorPublico = rbtnSectorPublico.checked;
-        var sectorPrivado = rbtnSectorPrivado.checked;
-        var ramoIndustrial = rbtnRamoIndustrial.checked;
-        var ramoServicios = rbtnRamoServicios.checked;
-        var ramoOtro = rbtnRamoOtro.checked;
-        //Verificar si se ha ingresado datos en ellos
-        if (empresa.length < 5 || empresa.length > 60 || !validarEmail.test(email) || !validarCP.test(cp) ||
-            domicilio.length < 10 || domicilio.length > 80 || !validarTelefono.test(telefono) ||
-            mision.length < 10 || sectorPublico == false && sectorPrivado == false || cp.length != 5 ||
-            ramoIndustrial == false && ramoServicios == false && ramoOtro == false || parseInt(id_estado) < 0 || parseInt(id_municipio) < 0) {
-            if (empresa.length < 5 || empresa.length > 60) {
-                txtEmpresa.classList.add('is-invalid');
-            } else {
-                txtEmpresa.classList.add('is-valid');
-            }
-            if (!validarEmail.test(email)) {
-                txtEmail.classList.add('is-invalid');
-            } else {
-                txtEmail.classList.add('is-valid');
-            }
-            if (!validarCP.test(cp) || cp.length != 5) {
-                txtCP.classList.add('is-invalid');
-            } else {
-                txtCP.classList.add('is-valid');
-            }
-            if (domicilio.length < 10 || domicilio.length > 80) {
-                txtDomicilio.classList.add('is-invalid');
-            } else {
-                txtDomicilio.classList.add('is-valid');
-            }
-            if (!validarTelefono.test(telefono)) {
-                txtTelefono.classList.add('is-invalid');
-            } else {
-                txtTelefono.classList.add('is-valid');
-            }
-            if (mision.length < 10) {
-                txtMision.classList.add('is-invalid');
-            } else {
-                txtMision.classList.add('is-valid');
-            }
-            if (parseInt(id_estado) < 0) {
-                id_estado.classList.add('is-invalid');
-            } else {
-                id_estado.classList.add('is-valid');
-            }
-            if (parseInt(id_municipio) < 0) {
-                id_municipio.classList.add('is-invalid');
-            } else {
-                id_municipio.classList.add('is-valid');
-            }
 
-            if (sectorPublico == false && sectorPrivado == false) {
-                rbtnSectorPrivado.classList.add('is-invalid');
-                rbtnSectorPublico.classList.add('is-invalid');
-            } else {
-                rbtnSectorPrivado.classList.add('is-valid');
-                rbtnSectorPublico.classList.add('is-valid');
-            }
-            if (ramoIndustrial == false && ramoServicios == false && ramoOtro == false) {
-                rbtnRamoIndustrial.classList.add('is-invalid');
-                rbtnRamoServicios.classList.add('is-invalid');
-                rbtnRamoOtro.classList.add('is-invalid');
-            } else {
-                rbtnRamoIndustrial.classList.add('is-valid');
-                rbtnRamoServicios.classList.add('is-valid');
-                rbtnRamoOtro.classList.add('is-valid');
-            }
 
-            //Cancelar el submit 
-            evento.preventDefault();
-        } else {
+
+
+    $("#btnRegistrar").click(function () {
+        $("#FrmRegistrarDatos").data('bootstrapValidator').validate();
+        if ($("#FrmRegistrarDatos").data('bootstrapValidator').isValid()) {
+
+            var empresa = txtEmpresa.value.trim();
+            var email = txtEmail.value.trim();
+            var cp = txtCP.value.trim();
+            var domicilio = txtDomicilio.value.trim();
+            var telefono = txtTelefono.value.trim();
+            var mision = txtMision.value.trim();
+            var sectorPublico = rbtnSectorPublico.checked;
+            var sectorPrivado = rbtnSectorPrivado.checked;
+            var ramoIndustrial = rbtnRamoIndustrial.checked;
+            var ramoServicios = rbtnRamoServicios.checked;
+            var ramoOtro = rbtnRamoOtro.checked;
+            var id_estado = document.getElementById('contenido_ddlEstado').value;
+            var id_municipio = document.getElementById('contenido_ddlMunicipio').value;
+
+            //// var btn = document.getElementById("btnRegistrar");
+            var btnAceptar = document.getElementById("btnAceptar");
+            ////btn.addEventListener('click', validar);
+            //validar();
+            btnAceptar.addEventListener('click', cerrar_modal);
             var giro = "";
             var sector = "";
             if (sectorPublico) {
@@ -130,7 +64,7 @@ function validar(evento) {
             datos += "'email' : '" + email + "',";
             datos += "'id_estado' : '" + id_estado + "',";
             datos += "'id_municipio' : '" + id_municipio + "',";
-            datos += "'codigo_postal' : '" + cp + "',";
+            datos += "'codigo_postal' : " + cp + ",";
             datos += "'domicilio' : '" + domicilio + "',";
             datos += "'giro' : '" + giro + "',";
             datos += "'sector' : '" + sector + "',";
@@ -224,12 +158,219 @@ function validar(evento) {
             }
         }
 
-    } catch (e) {
-        $('#contenido_divMsg').css('display', 'block');
-        //Cancelar el submit
-        evento.preventDefault();
+        //} else {
+        //    alert('con errores');
+        //}
+    });
+
+    $('#FrmRegistrarDatos').bootstrapValidator({
+        framework: 'bootstrap',
+        excluded: [':disabled', ':hidden'],
+        fields: {
+            ctl00$contenido$txtEmpresa: {
+                message: 'Contraseña no valida',
+                validators: {
+                    notEmpty: {
+                        message: 'El Campo es obligatorio'
+                    },
+                    regexp: {
+                        regexp: /^[a-zA-Z\s0-9]+$/,
+                        message: 'se debe colocar un nombre correcto'
+                    },
+                    stringLength: {
+                        min: 7,
+                        max: 100,
+                        message: 'La longitud del municipio debe ser entre 5 y 50 caracteres'
+                    }
+                }
+            },
+            ctl00$contenido$txtEmail: {
+                message: 'correo no valido',
+                validators: {
+                    notEmpty: {
+                        message: 'El campo es obligatorio'
+                    },
+                    regexp: {
+                        regexp: /^([\w-]+\.)*?[\w-]+@[\w-]+\.([\w-]+\.)*?[\w]+$/,
+                        message: 'El Email no es valido un ejmeplo es: ejemplo@emplo.com'
+                    }
+                }
+            },
+            ctl00$contenido$ddlEstado: {
+                validators: {
+                    notEmpty: {
+                        message: 'Es necesario indicar que tipo de usiario sera'
+                    },
+                    callback: {
+                        message: 'El tipo de usuario no es válido',
+
+                        callback: function (value, validator, $field) {
+                            return (value.length > 5 || value.length < 32);
+                        }
+                    }
+                }
+            },
+            ctl00$contenido$ddlMunicipio: {
+                validators: {
+                    notEmpty: {
+                        message: 'Es necesario indicar que tipo de usiario sera'
+                    },
+                    callback: {
+                        message: 'El tipo de usuario no es válido',
+
+                        callback: function (value, validator, $field) {
+                            return (value.length > 5 || value.length < 32);
+                        }
+                    }
+                }
+            },
+            ctl00$contenido$txtCP: {
+                message: 'Contraseña no valida',
+                validators: {
+                    notEmpty: {
+                        message: 'El Campo es obligatorio'
+                    },
+                    regexp: {
+                        regexp: /(^([0-9]{5,5})|^)$/,
+                        message: 'Debe ser solamente letras'
+                    },
+                    stringLength: {
+                        min: 5,
+                        max: 5,
+
+                        message: 'La longitud debe ser DE 5'
+                    }
+                }
+            },
+            ctl00$contenido$txtDomicilio: {
+                message: 'Contraseña no valida',
+                validators: {
+                    notEmpty: {
+                        message: 'El Campo es obligatorio'
+                    },
+                    regexp: {
+                        regexp: /^[a-zA-Z\s]+([#][0-9\s]{1,4})?([a-zA-Z\s]{1,1})?$/,
+                        message: 'la direccion debe iniciar con letras ej: itsur ó itsur#23 ó itsur#1234A'
+                    },
+                    stringLength: {
+                        min: 5,
+                        max: 100,
+
+                        message: 'La longitud MAX debe ser de 30'
+                    }
+                }
+            },
+            ctl00$contenido$Giro: {
+                validators: {
+                    notEmpty: {
+                        message: 'Es necesario indicar que tipo de usiario sera'
+                    },
+                    callback: {
+                        message: 'El tipo de usuario no es válido',
+
+                        callback: function (value, validator, $field) {
+                            return (value.length > 0 || value.length < 11);
+                        }
+                    }
+                }
+            },
+            ctl00$contenido$Sector: {
+                validators: {
+                    notEmpty: {
+                        message: 'Es necesario indicar que tipo de usiario sera'
+                    },
+                    callback: {
+                        message: 'El tipo de usuario no es válido',
+
+                        callback: function (value, validator, $field) {
+                            return (value.length > 0 || value.length < 11);
+                        }
+                    }
+                }
+            },
+            ctl00$contenido$txtTelefono: {
+                message: 'Contraseña no valida',
+                validators: {
+                    notEmpty: {
+                        message: 'El Campo es obligatorio'
+                    },
+                    regexp: {
+                        regexp: /^[(]{0,1}[+]*[0-9]{2,2}[)]{0,1}[-\s\./0-9]*$/,
+                        message: 'Debe ser solamente letras'
+                    },
+                    stringLength: {
+                        min: 7,
+                        max: 100,
+                        message: 'La longitud del municipio debe ser entre 5 y 50 caracteres'
+                    }
+                }
+            }, ctl00$contenido$txtMision: {
+                message: 'Contraseña no valida',
+                validators: {
+                    notEmpty: {
+                        message: 'El Campo es obligatorio'
+                    },
+                    regexp: {
+                        regexp: /^[a-zA-Z\s]+$/,
+                        message: 'Debe ser solamente letras'
+                    },
+                    stringLength: {
+                        min: 7,
+                        max: 100,
+                        message: 'La longitud del municipio debe ser entre 5 y 50 caracteres'
+                    }
+                }
+            }
+
+
+        }
+    });
+
+
+    debugger;
+    var id = localStorage.getItem("id_empresa");
+    localStorage.setItem("id_municipio", null);
+    var email_usuario = $("#contenido_txtEmailUsuario").val();
+    if (id == "vacio") {
+
     }
-}
+    else if (email_usuario != null && email_usuario != "" && id == null) {
+        var datos = "{ 'email' : '" + email_usuario + "'}";
+        $.when(cargarDatosEmail(datos)).then(function () {
+            setTimeout(function () {
+                var id_mun = localStorage.getItem("id_municipio");
+                if (id_mun != 0 && id_mun > 0) {
+                    $("#contenido_ddlMunicipio").val(id_mun);
+                    $('#contenido_ddlMunicipio').change();
+                }
+            }, 150);
+        });
+    } else if (id != null) {
+        $.when(cargarDatosID()).then(function () {
+            setTimeout(function () {
+                var id_mun = localStorage.getItem("id_municipio");
+                if (id_mun != 0 && id_mun > 0) {
+                    $("#contenido_ddlMunicipio").val(id_mun);
+                    $('#contenido_ddlMunicipio').change();
+                }
+            }, 150);
+        });
+    } else {
+
+    }
+    $("#contenido_ddlEstado").change(function () {
+        var nombre_estado = $('#contenido_ddlEstado :selected').text();
+        var datos = "{ 'estado' : '" + nombre_estado + "'}";
+        cambiarMunicipios(datos);
+    });
+
+    $("#btnCancelar").click(function () {
+        localStorage.removeItem("id_empresa");
+        window.location.assign("FrmContenedor.aspx");
+    });
+});
+
+
 function cargarDatosEmail(datos) {
     $.ajax({
         type: 'POST',
@@ -354,3 +495,5 @@ function cambiarMunicipios(datos) {
 function cerrar_modal(evento) {
     window.location.assign("FrmContenedor.aspx")
 }
+
+

@@ -32,15 +32,14 @@ body{
 input,select{
     margin-left:15px!important;
 }
-#contenido_txtPassword, #contenido_txtEmail, input[type="password"],input[type="text"]
-,input[type="tel"]{
-    color:orangered;
-    font-size:16px;
-    font-family:Arial, Helvetica, sans-serif;
-    width:100%!important;
-    font-weight:bold;
-    padding-left:15px!important;
-}
+    #contenido_txtPassword, #contenido_txtEmail, input[type="password"], input[type="text"], input[type="tel"] {
+        color: #520a9b;
+        font-size: 16px;
+        font-family: Arial, Helvetica, sans-serif;
+        width: 100% !important;
+        font-weight: bold;
+        padding-left: 15px !important;
+    }
 .contenedor{
     width:100%!important;
     background-color:#EEEEEE;
@@ -62,9 +61,6 @@ input,select{
     width: 1000px!important;
     margin: 20px auto!important;
 }
-#contenido_txtCP{
-    margin-left: -150px !important;
-}
 .text-left.lbl{
     margin-left:-100px !important;
 }
@@ -78,16 +74,16 @@ input[type="radio"]{
     margin-top: -5px !important;
     margin-right: 3px;
 }
-#contenido_txtMision,#txtSolicito,#txtRequisitos,#txtActividades{
-  display:inline-block;
-  vertical-align:middle;
-  resize: none;
-  color:orangered !important;
-  font-size:14px !important;
-  font-family:Arial, Helvetica, sans-serif !important;
-  box-shadow:2px 2px 2px #756c6c !important;
-  padding-left: 10px !important;
-  box-sizing:border-box !important;
+#contenido_txtMision, #txtSolicito, #txtRequisitos, #txtActividades {
+    display: inline-block;
+    vertical-align: middle;
+    resize: none;
+    color: #520a9b !important;
+    font-size: 14px !important;
+    font-family: Arial, Helvetica, sans-serif !important;
+    box-shadow: 2px 2px 2px #756c6c !important;
+    padding-left: 10px !important;
+    box-sizing: border-box !important;
 }
 #contenido_btnRegistrar,#contenido_btncambiar,#contenido_btncancelar{
     padding:10px 15px!important;
@@ -186,12 +182,17 @@ div#ofertasEncontradas{
 #halcon1 img, #halcon2 img {
     width:300px !important;
 }
-#ddlMunicipioBusqueda{
-    font-weight:bold !important;
-    font-size:17px !important;
-    color:#ac0974 !important;
+#ddlMunicipioBusqueda, #ddlEstadoBusqueda {
+    font-weight: bold !important;
+    font-size: 17px !important;
+    color: #ac0974 !important;
 }
 
 #ctl00_contenido_ReportViewer1 {
     width:0!important;
+}
+.texto_etiquetas {
+    font-size: 20px;
+    color: #007bff;
+    font-family: 'Times New Roman';
 }

@@ -11,12 +11,22 @@
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
 </head>
+
 <body>
+    <br />
+    <br />
+    <br />
+
         <asp:ContentPlaceHolder ID="contenido" runat="server"> 
+            <br />
+            <br />
+            <br />
         </asp:ContentPlaceHolder>
     <script src="js/jquery-3.4.1.js"></script>
     <script src="js/bootstrap.js"></script>
     <asp:ContentPlaceHolder ID="scripts" runat="server">
     </asp:ContentPlaceHolder>
+    <br />
+    <br />
 </body>
 </html>

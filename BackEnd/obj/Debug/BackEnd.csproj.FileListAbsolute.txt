@@ -1,0 +1,14 @@
+C:\Users\RamosHtvs\Desktop\Residentes_ITSURv1-master\Residentes_ITSURv1-master\BackEnd\bin\Debug\BackEnd.exe.config
+C:\Users\RamosHtvs\Desktop\Residentes_ITSURv1-master\Residentes_ITSURv1-master\BackEnd\bin\Debug\BackEnd.exe
+C:\Users\RamosHtvs\Desktop\Residentes_ITSURv1-master\Residentes_ITSURv1-master\BackEnd\bin\Debug\BackEnd.pdb
+C:\Users\RamosHtvs\Desktop\Residentes_ITSURv1-master\Residentes_ITSURv1-master\BackEnd\bin\Debug\EntityFramework.dll
+C:\Users\RamosHtvs\Desktop\Residentes_ITSURv1-master\Residentes_ITSURv1-master\BackEnd\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\RamosHtvs\Desktop\Residentes_ITSURv1-master\Residentes_ITSURv1-master\BackEnd\bin\Debug\MySql.Data.dll
+C:\Users\RamosHtvs\Desktop\Residentes_ITSURv1-master\Residentes_ITSURv1-master\BackEnd\bin\Debug\MySql.Data.Entity.EF6.dll
+C:\Users\RamosHtvs\Desktop\Residentes_ITSURv1-master\Residentes_ITSURv1-master\BackEnd\bin\Debug\EntityFramework.xml
+C:\Users\RamosHtvs\Desktop\Residentes_ITSURv1-master\Residentes_ITSURv1-master\BackEnd\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\RamosHtvs\Desktop\Residentes_ITSURv1-master\Residentes_ITSURv1-master\BackEnd\bin\Debug\MySql.Data.xml
+C:\Users\RamosHtvs\Desktop\Residentes_ITSURv1-master\Residentes_ITSURv1-master\BackEnd\bin\Debug\MySql.Data.Entity.EF6.xml
+C:\Users\RamosHtvs\Desktop\Residentes_ITSURv1-master\Residentes_ITSURv1-master\BackEnd\obj\Debug\BackEnd.csproj.CopyComplete
+C:\Users\RamosHtvs\Desktop\Residentes_ITSURv1-master\Residentes_ITSURv1-master\BackEnd\obj\Debug\BackEnd.exe
+C:\Users\RamosHtvs\Desktop\Residentes_ITSURv1-master\Residentes_ITSURv1-master\BackEnd\obj\Debug\BackEnd.pdb
