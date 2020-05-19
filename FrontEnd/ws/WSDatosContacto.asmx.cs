@@ -6,6 +6,7 @@ using System.Web.Services;
 using BackEnd.Datos;
 using BackEnd.Modelo;
 using System.Web.Script.Serialization;
+using System.Text.RegularExpressions;
 namespace FrontEnd.ws
 {
     /// <summary>
@@ -18,7 +19,17 @@ namespace FrontEnd.ws
     [System.Web.Script.Services.ScriptService]
     public class WSDatosContacto : System.Web.Services.WebService
     {
-
+        String mensaje = "";
+        public int validarCamposInsertar(String nombre, String email, String id_estado, String id_municipio, String codigo_postal,
+            String domicilio, String giro, String sector, String telefono, String mision)
+        {
+            if (nombre.Length < 4 || nombre.Length > 25)
+                mensaje += "El nombre es un dato obligatorio, debe contener entre 4 y 25 caracteres<br>";
+            Regex validarEmail = new Regex("^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\\.([a-zA-Z]{2,4})+");
+            if (!validarEmail.IsMatch(email))
+                mensaje += "El email es un dato obligatorio y debe tener un formato válido<br>";
+            return mensaje.Length;
+        }
         [WebMethod]
         public List<Estados> getEstados()
         {

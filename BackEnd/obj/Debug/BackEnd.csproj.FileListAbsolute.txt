@@ -1,0 +1,15 @@
+C:\Users\TEMP.Cristian_FN\Documents\GitHub\Residentes_ITSUR\Residentes_ITSURv1\BackEnd\bin\Debug\BackEnd.exe.config
+C:\Users\TEMP.Cristian_FN\Documents\GitHub\Residentes_ITSUR\Residentes_ITSURv1\BackEnd\bin\Debug\BackEnd.exe
+C:\Users\TEMP.Cristian_FN\Documents\GitHub\Residentes_ITSUR\Residentes_ITSURv1\BackEnd\bin\Debug\BackEnd.pdb
+C:\Users\TEMP.Cristian_FN\Documents\GitHub\Residentes_ITSUR\Residentes_ITSURv1\BackEnd\bin\Debug\EntityFramework.dll
+C:\Users\TEMP.Cristian_FN\Documents\GitHub\Residentes_ITSUR\Residentes_ITSURv1\BackEnd\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\TEMP.Cristian_FN\Documents\GitHub\Residentes_ITSUR\Residentes_ITSURv1\BackEnd\bin\Debug\MySql.Data.dll
+C:\Users\TEMP.Cristian_FN\Documents\GitHub\Residentes_ITSUR\Residentes_ITSURv1\BackEnd\bin\Debug\MySql.Data.Entity.EF6.dll
+C:\Users\TEMP.Cristian_FN\Documents\GitHub\Residentes_ITSUR\Residentes_ITSURv1\BackEnd\bin\Debug\EntityFramework.xml
+C:\Users\TEMP.Cristian_FN\Documents\GitHub\Residentes_ITSUR\Residentes_ITSURv1\BackEnd\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\TEMP.Cristian_FN\Documents\GitHub\Residentes_ITSUR\Residentes_ITSURv1\BackEnd\bin\Debug\MySql.Data.xml
+C:\Users\TEMP.Cristian_FN\Documents\GitHub\Residentes_ITSUR\Residentes_ITSURv1\BackEnd\bin\Debug\MySql.Data.Entity.EF6.xml
+C:\Users\TEMP.Cristian_FN\Documents\GitHub\Residentes_ITSUR\Residentes_ITSURv1\BackEnd\obj\Debug\BackEnd.csproj.CoreCompileInputs.cache
+C:\Users\TEMP.Cristian_FN\Documents\GitHub\Residentes_ITSUR\Residentes_ITSURv1\BackEnd\obj\Debug\BackEnd.csproj.CopyComplete
+C:\Users\TEMP.Cristian_FN\Documents\GitHub\Residentes_ITSUR\Residentes_ITSURv1\BackEnd\obj\Debug\BackEnd.exe
+C:\Users\TEMP.Cristian_FN\Documents\GitHub\Residentes_ITSUR\Residentes_ITSURv1\BackEnd\obj\Debug\BackEnd.pdb
