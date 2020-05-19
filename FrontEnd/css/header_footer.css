@@ -1,0 +1,143 @@
+﻿.universal{
+    margin:0!important;
+    padding:0!important;
+}
+nav div.fila{
+    width: 100%; 
+    background-color: #212529;
+    color:white;
+}
+nav{
+    height:60px;
+}
+#logo img{
+    height:60px;
+    padding:5px 0 5px 30px !important;
+}
+div .items{
+    height:auto;
+}
+div .items ul{
+    width:100%;
+    list-style:none;
+}
+div .items ul li{
+    float:left;
+    width:16.5%;
+    text-align:center;
+    line-height:60px;
+}
+.invitado li{
+    float:left !important;
+    width:25% !important;
+    text-align:center !important;
+    line-height:60px !important;
+}
+.empresa li{
+    float:left !important;
+    width:20% !important;
+    text-align:center !important;
+    line-height:60px !important;
+}
+.administrador li{
+    float:left !important;
+    width:20% !important;
+    text-align:center !important;
+    line-height:60px !important;
+}
+
+div .items ul li a:link, div .items ul li a:visited{
+    text-decoration:none;
+    display:block;
+    color:white;
+    font-size:12px!important;
+}
+div .items ul li a:hover{
+    background-color:cadetblue;
+}
+h2 a{
+    color:white;
+}
+h2 a:hover{
+    color:deepskyblue;
+    text-decoration:none;
+}
+.activo{
+    background-color:mediumslateblue !important;
+}
+footer {
+    padding: .5rem 0 0;
+    color: #fff;
+    text-align: center;
+    background-color: #212529;
+    border-top: 5px solid #f2267c;
+    bottom:0;
+    position:fixed!important;  
+    width:100%;
+    position:relative;
+    height:100px;
+}
+
+footer p {
+    margin-bottom: .5rem;
+}
+#linkItsur{
+    text-transform:uppercase;
+    margin-top:15px;
+    margin-left:-30px !important;
+    font-family:sans-serif,Helvetica,Arial;
+}
+#linkItsur a,#linkItsur a:visited,#linkItsur a:visited{
+   color:white;
+   text-decoration:underline;
+}
+#linkItsur a:hover{
+    color:springgreen;
+    text-decoration:none;
+}
+#lemaITSUR{
+    position:absolute;
+    top:25%;
+    left:2%;
+    font-size:12px;
+    text-transform:uppercase;
+}
+#telefonosITSUR{
+    position:absolute;
+    top:50%;
+    left:2%;
+    font-size:12px;
+}
+#domicilioITSUR1{
+    position:absolute;
+    top:20%;
+    right:2%;
+    font-size:12px;
+}
+#domicilioITSUR2{
+    position:absolute;
+    top:35%;
+    right:2%;
+    font-size:12px;
+    text-align:left;
+}
+#logoFooter img{
+    width:60px;
+    position:absolute;
+    top:20%;
+    left:25%;
+}
+#halconFooter img{
+    width:100px;
+    position:absolute;
+    top:18%;
+    left:67%;
+    margin-left:10px;
+}
+#copyright{
+    position:absolute;
+    top:55%;
+    right:2%;
+    font-size:14px;
+    text-align:left;
+}

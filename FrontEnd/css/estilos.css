@@ -1,0 +1,197 @@
+﻿.universal{
+    margin:0!important;
+    padding:0!important;
+}
+body{
+    background-color:#EEEEEE;
+}
+.contenedorLogin{
+    width: 600px!important;
+    margin: 60px auto!important;
+    box-shadow:2px 2px 2px #756c6c !important;
+    background-color: #fff;
+}
+.container{
+    background-color: #fff;
+}
+.containerPrincipal{
+    background-color: #fff;
+    width: 90% !important;
+    margin:5px auto!important;
+    box-shadow:2px 2px 2px #756c6c !important;
+    margin-bottom:120px!important;
+}
+#contenido_divMensaje{
+    width:200px!important;
+    margin: 20px auto!important;
+    padding:15px !important;
+}
+#contenido_btnIniciarSesion{
+    padding:10px !important;
+}
+input,select{
+    margin-left:15px!important;
+}
+#contenido_txtPassword, #contenido_txtEmail, input[type="password"],input[type="text"]
+,input[type="tel"]{
+    color:orangered;
+    font-size:16px;
+    font-family:Arial, Helvetica, sans-serif;
+    width:100%!important;
+    font-weight:bold;
+    padding-left:15px!important;
+}
+.contenedor{
+    width:100%!important;
+    background-color:#EEEEEE;
+    height:100%!important;
+    margin: 0 auto!important;
+}
+.buscador{
+	height: 200px!important;
+	background-color:#DDDDDD;
+}
+.etiqueta label{
+	padding-left:50px!important;
+}
+#contenido_btnBuscar{
+	padding: 10px!important;
+}
+.formulario{
+    background-color: #fff;
+    width: 1000px!important;
+    margin: 20px auto!important;
+}
+#contenido_txtCP{
+    margin-left: -150px !important;
+}
+.text-left.lbl{
+    margin-left:-100px !important;
+}
+#giro{
+    margin-left: 20px !important;
+}
+#sector{
+    margin-left: -20px !important;
+}
+input[type="radio"]{
+    margin-top: -5px !important;
+    margin-right: 3px;
+}
+#contenido_txtMision,#txtSolicito,#txtRequisitos,#txtActividades{
+  display:inline-block;
+  vertical-align:middle;
+  resize: none;
+  color:orangered !important;
+  font-size:14px !important;
+  font-family:Arial, Helvetica, sans-serif !important;
+  box-shadow:2px 2px 2px #756c6c !important;
+  padding-left: 10px !important;
+  box-sizing:border-box !important;
+}
+#contenido_btnRegistrar,#contenido_btncambiar,#contenido_btncancelar{
+    padding:10px 15px!important;
+}
+.contenedorPassword{
+    width:50%!important;
+    background-color:#DDD;
+    min-height:300px!important;
+    height:auto;
+    padding:20px 0 !important;
+    position:absolute;
+    top:42% !important;
+    left:50% !important;
+    margin-top:-13%!important;
+    margin-left:-25%!important;
+    box-shadow: 5px 5px 2px black;
+}
+#contenido_txtMision{
+    height:120px !important;
+}
+.divContenido{
+   margin-bottom: 100px !important;
+}
+.tarjetas, div#ofertasEncontradas{
+    background-color:white;
+    width: 100% !important;
+}
+.cardIndividual{
+    background:url(../imagenes/halcon.png) no-repeat top right #f0d4a8 !important;
+    width: 80% !important;
+    margin:15px auto !important;
+    padding:15px 25px !important;
+    border-radius:20px !important;
+    border: 2px solid black;
+}
+div#ofertasEncontradas{
+    margin-bottom: 120px !important;
+    margin-top:15px !important;
+}
+.row.botonesOfertas{
+    width: 60% !important;
+    margin:0 auto !important;
+}
+.bold{
+    font-weight:bold !important;
+
+}
+.tituloOferta {
+    color: #ff0f26;
+    font-weight: bold;
+    text-align: center;
+}
+#btnVerMas{
+    cursor:pointer;
+}
+.marginCarreras{
+    margin-right:500px !important;
+}
+.marginSolicito{
+    margin-left:120px !important;
+}
+.textoNosotros{
+    width:80% !important;
+    margin:0 auto !important;
+    padding:0 15px !important;
+    min-height:650px !important;
+    position:relative;
+}
+#alumnosInvolucrados{
+    width:40% !important;
+    margin:10px auto !important;
+}
+#herramienta{
+    color:#e31a5b;;
+    font-weight:bold;
+}
+#herramienta a{
+    font-weight:bold;
+}
+#halcon1{
+    width:300px !important;
+    position:absolute;
+    top:50%;
+    left:2%;
+    margin-top:-120px !important;
+    margin-left:-120px;
+}
+#halcon2{
+    width:300px !important;
+    position:absolute;
+    top:50%;
+    right:2% !important;
+    margin-top:-120px !important;
+    margin-right:-120px;
+}
+#halcon1 img, #halcon2 img {
+    width:300px !important;
+}
+#ddlMunicipioBusqueda{
+    font-weight:bold !important;
+    font-size:17px !important;
+    color:#ac0974 !important;
+}
+
+#ctl00_contenido_ReportViewer1 {
+    width:0!important;
+}
