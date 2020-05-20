@@ -37,10 +37,7 @@ $(document).ready(function () {
             var id_estado = document.getElementById('contenido_ddlEstado').value;
             var id_municipio = document.getElementById('contenido_ddlMunicipio').value;
 
-            //// var btn = document.getElementById("btnRegistrar");
             var btnAceptar = document.getElementById("btnAceptar");
-            ////btn.addEventListener('click', validar);
-            //validar();
             btnAceptar.addEventListener('click', cerrar_modal);
             var giro = "";
             var sector = "";
@@ -158,9 +155,6 @@ $(document).ready(function () {
             }
         }
 
-        //} else {
-        //    alert('con errores');
-        //}
     });
 
     $('#FrmRegistrarDatos').bootstrapValidator({
@@ -168,27 +162,27 @@ $(document).ready(function () {
         excluded: [':disabled', ':hidden'],
         fields: {
             ctl00$contenido$txtEmpresa: {
-                message: 'Contraseña no valida',
+                message: 'Nombre de la Empresa no valido',
                 validators: {
                     notEmpty: {
-                        message: 'El Campo es obligatorio'
+                        message: 'Este campo es obligatorio y no debe estar vacio.'
                     },
                     regexp: {
                         regexp: /^[a-zA-Z\s0-9]+$/,
-                        message: 'se debe colocar un nombre correcto'
+                        message: 'Se debe colocar un nombre valido y no puede tener caracteres especiales.'
                     },
                     stringLength: {
                         min: 7,
-                        max: 100,
-                        message: 'La longitud del municipio debe ser entre 5 y 50 caracteres'
+                        max: 50,
+                        message: 'El nombre de la empresa puede tener hasta 50 caracteres'
                     }
                 }
             },
             ctl00$contenido$txtEmail: {
-                message: 'correo no valido',
+                message: 'Email no valido',
                 validators: {
                     notEmpty: {
-                        message: 'El campo es obligatorio'
+                        message: 'Este campo es obligatorio y no debe estar vacio.'
                     },
                     regexp: {
                         regexp: /^([\w-]+\.)*?[\w-]+@[\w-]+\.([\w-]+\.)*?[\w]+$/,
@@ -199,10 +193,10 @@ $(document).ready(function () {
             ctl00$contenido$ddlEstado: {
                 validators: {
                     notEmpty: {
-                        message: 'Es necesario indicar que tipo de usiario sera'
+                        message: 'Este campo es obligatorio y no debe estar vacio.'
                     },
                     callback: {
-                        message: 'El tipo de usuario no es válido',
+                        message: 'Se debe seleccionar un estado.',
 
                         callback: function (value, validator, $field) {
                             return (value.length > 5 || value.length < 32);
@@ -213,10 +207,10 @@ $(document).ready(function () {
             ctl00$contenido$ddlMunicipio: {
                 validators: {
                     notEmpty: {
-                        message: 'Es necesario indicar que tipo de usiario sera'
+                        message: 'EEste campo es obligatorio y no debe estar vacio.'
                     },
                     callback: {
-                        message: 'El tipo de usuario no es válido',
+                        message: 'Se debe seleecionar un municipio.',
 
                         callback: function (value, validator, $field) {
                             return (value.length > 5 || value.length < 32);
@@ -225,48 +219,48 @@ $(document).ready(function () {
                 }
             },
             ctl00$contenido$txtCP: {
-                message: 'Contraseña no valida',
+                message: 'Codigo postal no valido.',
                 validators: {
                     notEmpty: {
-                        message: 'El Campo es obligatorio'
+                        message: 'Este campo es obligatorio y no debe estar vacio.'
                     },
                     regexp: {
                         regexp: /(^([0-9]{5,5})|^)$/,
-                        message: 'Debe ser solamente letras'
+                        message: 'El cogigo postal debe ser numerico'
                     },
                     stringLength: {
                         min: 5,
                         max: 5,
 
-                        message: 'La longitud debe ser DE 5'
+                        message: 'La longitud debe ser de 5 digitos exactamente.'
                     }
                 }
             },
             ctl00$contenido$txtDomicilio: {
-                message: 'Contraseña no valida',
+                message: 'Domicilio no valid0',
                 validators: {
                     notEmpty: {
-                        message: 'El Campo es obligatorio'
+                        message: 'Este campo es obligatorio y no debe estar vacio.'
                     },
                     regexp: {
-                        regexp: /^[a-zA-Z\s]+([#][0-9\s]{1,4})?([a-zA-Z\s]{1,1})?$/,
+                        regexp: /^[a-zA-Z\s]+([#]?[0-9\s]{1,4})?([a-zA-Z\s]{1,1})?$/,
                         message: 'la direccion debe iniciar con letras ej: itsur ó itsur#23 ó itsur#1234A'
                     },
                     stringLength: {
                         min: 5,
                         max: 100,
 
-                        message: 'La longitud MAX debe ser de 30'
+                        message: 'La longitud MAXIMA debe ser de 100 caracteres'
                     }
                 }
             },
             ctl00$contenido$Giro: {
                 validators: {
                     notEmpty: {
-                        message: 'Es necesario indicar que tipo de usiario sera'
+                        message: 'Este campo es obligatorio y no debe estar vacio.'
                     },
                     callback: {
-                        message: 'El tipo de usuario no es válido',
+                        message: 'Es necesario indicar que tipo de GIRO de la empresa',
 
                         callback: function (value, validator, $field) {
                             return (value.length > 0 || value.length < 11);
@@ -280,7 +274,7 @@ $(document).ready(function () {
                         message: 'Es necesario indicar que tipo de usiario sera'
                     },
                     callback: {
-                        message: 'El tipo de usuario no es válido',
+                        message: 'Es necesario indicar el tipo de sector de la empresa',
 
                         callback: function (value, validator, $field) {
                             return (value.length > 0 || value.length < 11);
@@ -289,35 +283,35 @@ $(document).ready(function () {
                 }
             },
             ctl00$contenido$txtTelefono: {
-                message: 'Contraseña no valida',
+                message: 'Telefono no es valido',
                 validators: {
                     notEmpty: {
-                        message: 'El Campo es obligatorio'
+                        message: 'Este campo es obligatorio y no debe estar vacio.'
                     },
                     regexp: {
                         regexp: /^[(]{0,1}[+]*[0-9]{2,2}[)]{0,1}[-\s\./0-9]*$/,
-                        message: 'Debe ser solamente letras'
+                        message: 'El telefono debe ser numerico ej. (+52) 445-135-35-30'
                     },
                     stringLength: {
                         min: 7,
-                        max: 100,
-                        message: 'La longitud del municipio debe ser entre 5 y 50 caracteres'
+                        max: 50,
+                        message: 'Al menos debe tener 7 digitos'
                     }
                 }
             }, ctl00$contenido$txtMision: {
-                message: 'Contraseña no valida',
+                message: 'Mision no valida',
                 validators: {
                     notEmpty: {
-                        message: 'El Campo es obligatorio'
+                        message: 'Este campo es obligatorio y no debe estar vacio.'
                     },
                     regexp: {
                         regexp: /^[a-zA-Z\s]+$/,
-                        message: 'Debe ser solamente letras'
+                        message: 'La mision debe ser validas y solamente se admited letras'
                     },
                     stringLength: {
                         min: 7,
                         max: 100,
-                        message: 'La longitud del municipio debe ser entre 5 y 50 caracteres'
+                        message: 'Indica las características más importantes de la mision con un MAXIMO de 100 caracteres'
                     }
                 }
             }

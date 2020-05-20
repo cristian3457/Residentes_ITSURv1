@@ -35,30 +35,30 @@ $(document).ready(function () {
                 message: 'Contraseña no valida',
                 validators: {
                     notEmpty: {
-                        message: 'El Campo es obligatorio'
+                        message: 'Este campo es obligatorio y no debe estar vacio.'
                     },
                     identical: {
                         field: 'ctl00$contenido$txtConfirmarPassword',
-                        message: 'Las contraseñas no son iguales'
+                        message: 'Las contraseñas no coinciden.'
                     },
                     regexp: {
                         regexp: /(?=^.{8,16}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/,
-                        message: 'Debe tener entre 8 y 16 caracteres, al menos un dígito, al menos una minúscula, al menos una mayúscula'
+                        message: 'La contraseña Debe tener entre 8 y 16 caracteres, al menos un dígito, al menos una minúscula, al menos una mayúscula'
                     }
                 }
             }, ctl00$contenido$txtConfirmarPassword: {
                 message: 'Contraseña no valida',
                 validators: {
                     notEmpty: {
-                        message: 'El Campo es obligatorio'
+                        message: 'Este campo es obligatorio y no debe estar vacio.'
                     },
                     identical: {
                         field: 'ctl00$contenido$txtPassword',
-                        message: 'Las contraseñas no son iguales'
+                        message: 'Las contraseñas no coinciden.'
                     },
                     regexp: {
                         regexp: /(?=^.{8,16}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/,
-                        message: 'Debe tener entre 8 y 16 caracteres, al menos un dígito, al menos una minúscula, al menos una mayúscula'
+                        message: 'La contraseña Debe tener entre 8 y 16 caracteres, al menos un dígito, al menos una minúscula, al menos una mayúscula'
                     }
                 }
             }

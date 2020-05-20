@@ -41,10 +41,10 @@ $(document).ready(function () {
         excluded: [':disabled', ':hidden'],
         fields: {
             ctl00$contenido$txtEmail: {
-                message: 'correo no valido',
+                message: 'Email no valido',
                 validators: {
                     notEmpty: {
-                        message: 'El campo es obligatorio'
+                        message: 'Este campo es obligatorio y no debe estar vacio.'
                     },
                     regexp: {
                         regexp: /^([\w-]+\.)*?[\w-]+@[\w-]+\.([\w-]+\.)*?[\w]+$/,
@@ -56,33 +56,35 @@ $(document).ready(function () {
                 message: 'Contraseña no valida',
                 validators: {
                     notEmpty: {
-                        message: 'El Campo es obligatorio'
+                        message: 'Este campo es obligatorio y no debe estar vacio.'
                     },
                     identical: {
                         field: 'ctl00$contenido$txtConfirmarPassword',
-                        message: 'The password and its confirm are not the same'
+                        message: 'Las contraseñas no coinciden'
                     },
                     regexp: {
                         regexp: /(?=^.{8,16}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/,
-                        message: 'Debe tener entre 8 y 16 caracteres, al menos un dígito, al menos una minúscula, al menos una mayúscula'
+                        message: 'La contraseña Debe tener entre 8 y 16 caracteres, al menos un dígito, al menos una minúscula, al menos una mayúscula'
                     }
                 }
             },
             ctl00$contenido$txtConfirmarPassword: {
+                message: 'Contraseña no valida',
                 validators: {
                     notEmpty: {
                         message: 'El Campo es obligatorio'
                     },
                     identical: {
                         field: 'ctl00$contenido$txtPassword',
-                        message: 'The password and its confirm are not the same'
+                        message: 'Las contraseñas no coinciden'
                     },
                     regexp: {
                         regexp: /(?=^.{8,16}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/,
-                        message: 'Debe tener entre 8 y 16 caracteres, al menos un dígito, al menos una minúscula, al menos una mayúscula'
+                        message: 'La contraseña Debe tener entre 8 y 16 caracteres, al menos un dígito, al menos una minúscula, al menos una mayúscula'
                     }
                 }
             }, ctl00$contenido$ddlTipoUsuario: {
+                message: 'Tipo de usuario no valido',
                 validators: {
                     notEmpty: {
                         message: 'Es necesario indicar que tipo de usiario sera'

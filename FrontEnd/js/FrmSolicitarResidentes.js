@@ -58,11 +58,48 @@ $(document).ready(function () {
                             alert(textStatus + " --- " + errorThrown + "--- ");
                         }
                     });
-                    var btnAceptar = document.getElementById("btnAceptar");
-                    btnAceptar.addEventListener('click', cerrar_modal);
+                   
                 }
             }
+            var btnEditar = $("#btnRegistrar").val();
+            if (id_oferta != null && btnEditar == "Editar") {
+                var email_usuario = $("#contenido_txtEmailUsuario").val();
+                var sueldo = $("#contenido_txtSueldo").val();
+                var datos = "{ 'id_oferta' : '" + id_oferta + "',";
+                datos += "'perfil' : '" + perfil + "',";
+                datos += "'carrera' : '" + carrera + "',";
+                datos += "'sueldo' : '" + sueldo + "',";
+                datos += "'solicito' : '" + solicito + "',";
+                datos += "'requisitos' : '" + requisitos + "',";
+                datos += "'actividades' : '" + actividades + "'}";
+                $.ajax({
+                    type: 'POST',
+                    url: 'ws/WSOfertas.asmx/update',
+                    data: datos,
+                    contentType: 'application/json; utf-8',
+                    dataType: 'json',
+                    success: function (data) {
+                        if (data.d) {
+                            localStorage.removeItem("id_oferta");
+                            $('#mdlInformacion').modal('show');
+                        }
+                        else {
+                            alert("nacho ocurrio un error");
+                        }
+                    },
+                    error: function (jqXHR, textStatus, errorThrown) {
+                        alert(textStatus + " --- " + errorThrown + "--- ");
+                    }
+                });
+            }
 
+
+
+
+
+
+            var btnAceptar = document.getElementById("btnAceptar");
+            btnAceptar.addEventListener('click', cerrar_modal);
         } else {
             alert('con errores');
         }
@@ -74,29 +111,29 @@ $(document).ready(function () {
         excluded: [':disabled', ':hidden'],
         fields: {
             ctl00$contenido$txtPerfil: {
-                message: 'Contraseña no valida',
+                message: 'Perfil no valido',
                 validators: {
                     notEmpty: {
-                        message: 'El Campo es obligatorio'
+                        message: 'Este campo es obligatorio y no debe estar vacio.'
                     },
                     regexp: {
                         regexp: /^[a-zA-Z\s]+$/,
-                        message: 'Debe ser solamente letras'
+                        message: 'El perfil deben solamente de letras'
                     },
                     stringLength: {
                         min: 7,
                         max: 50,
-                        message: 'La longitud del municipio debe ser entre 5 y 50 caracteres'
+                        message: 'La longitud MAXIMA son 50 caracteres'
                     }
                 }
             }, 
             ctl00$contenido$ddlCarrera: {
                 validators: {
                     notEmpty: {
-                        message: 'Es necesario indicar que tipo de usiario sera'
+                        message: 'Este campo es obligatorio y no debe estar vacio.'
                     },
                     callback: {
-                        message: 'El tipo de usuario no es válido',
+                        message: 'La carrera no es valida se debe seleccionar una correcta',
 
                         callback: function (value, validator, $field) {
                             return (value.length > 8 && value.length < 28);
@@ -105,36 +142,36 @@ $(document).ready(function () {
                 }
             },
             txtSolicito: {
-                message: 'Contraseña no valida',
+                message: 'texto no valido',
                 validators: {
                     notEmpty: {
-                        message: 'El Campo es obligatorio'
+                        message: 'Este campo es obligatorio y no debe estar vacio.'
                     },
                     regexp: {
-                        regexp: /^[a-zA-Z\s]+$/,
-                        message: 'Debe ser solamente letras'
+                        regexp: /^[a-zA-Z0-9\s\-]+$/,
+                        message: 'El campo no acepta caracteres especiales'
                     },
                     stringLength: {
-                        min: 7,
-                        max: 50,
-                        message: 'La longitud del municipio debe ser entre 5 y 50 caracteres'
+                        min: 10,
+                        max: 150,
+                        message: 'La longitud MAXIMA es de 150 caracteres'
                     }
                 }
             },
             txtRequisitos: {
-                message: 'Contraseña no valida',
+                message: 'texto no valido',
                 validators: {
                     notEmpty: {
-                        message: 'El Campo es obligatorio'
+                        message: 'Este campo es obligatorio y no debe estar vacio.'
                     },
                     regexp: {
-                        regexp: /^[a-zA-Z\s]+$/,
-                        message: 'Debe ser solamente letras'
+                        regexp: /^[a-zA-Z0-9\s\-]+$/,
+                        message: 'El campo no acepta caracteres especiales'
                     },
                     stringLength: {
-                        min: 7,
-                        max: 50,
-                        message: 'La longitud del municipio debe ser entre 5 y 50 caracteres'
+                        min: 10,
+                        max: 150,
+                        message: 'La longitud MAXIMA es de 150 caracteres'
                     }
                 }
             },
@@ -142,16 +179,16 @@ $(document).ready(function () {
                 message: 'Contraseña no valida',
                 validators: {
                     notEmpty: {
-                        message: 'El Campo es obligatorio'
+                        message: 'Este campo es obligatorio y no debe estar vacio.'
                     },
                     regexp: {
-                        regexp: /^[a-zA-Z\s]+$/,
-                        message: 'Debe ser solamente letras'
+                        regexp: /^[a-zA-Z\s\-]+$/,
+                        message: 'El campo no acepta caracteres especiales'
                     },
                     stringLength: {
-                        min: 7,
-                        max: 50,
-                        message: 'La longitud del municipio debe ser entre 5 y 50 caracteres'
+                        min: 10,
+                        max: 150,
+                        message: 'La longitud MAXIMA es de 150 caracteres'
                     }
                 }
             }
@@ -162,37 +199,7 @@ $(document).ready(function () {
 
 
 
-    var btnEditar = $("#btnRegistrar").val();
-    if (id_oferta != null && btnEditar == "Editar") {
-        var email_usuario = $("#contenido_txtEmailUsuario").val();
-        var sueldo = $("#contenido_txtSueldo").val();
-        var datos = "{ 'id_oferta' : '" + id_oferta + "',";
-        datos += "'perfil' : '" + perfil + "',";
-        datos += "'carrera' : '" + carrera + "',";
-        datos += "'sueldo' : '" + sueldo + "',";
-        datos += "'solicito' : '" + solicito + "',";
-        datos += "'requisitos' : '" + requisitos + "',";
-        datos += "'actividades' : '" + actividades + "'}";
-        $.ajax({
-            type: 'POST',
-            url: 'ws/WSOfertas.asmx/update',
-            data: datos,
-            contentType: 'application/json; utf-8',
-            dataType: 'json',
-            success: function (data) {
-                if (data.d) {
-                    localStorage.removeItem("id_oferta");
-                    $('#mdlInformacion').modal('show');
-                }
-                else {
-                    alert("nacho ocurrio un error");
-                }
-            },
-            error: function (jqXHR, textStatus, errorThrown) {
-                alert(textStatus + " --- " + errorThrown + "--- ");
-            }
-        });
-    }
+    
     var email_usuario = $("#contenido_txtEmailUsuario").val();
     var id_oferta = localStorage.getItem("id_oferta");
     if (id_oferta != null) {
