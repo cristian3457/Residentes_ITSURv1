@@ -172,9 +172,9 @@ $(document).ready(function () {
                         message: 'Se debe colocar un nombre valido y no puede tener caracteres especiales.'
                     },
                     stringLength: {
-                        min: 7,
-                        max: 50,
-                        message: 'El nombre de la empresa puede tener hasta 50 caracteres'
+                        min: 5,
+                        max: 60,
+                        message: 'El nombre de la empresa debe tener entre 5 y 60 caracteres'
                     }
                 }
             },
@@ -193,13 +193,13 @@ $(document).ready(function () {
             ctl00$contenido$ddlEstado: {
                 validators: {
                     notEmpty: {
-                        message: 'Este campo es obligatorio y no debe estar vacio.'
+                        message: 'Debes seleccionar un estado de la lista desplegable.'
                     },
                     callback: {
                         message: 'Se debe seleccionar un estado.',
 
                         callback: function (value, validator, $field) {
-                            return (value.length > 5 || value.length < 32);
+                            return (value > 0 && value < 33);
                         }
                     }
                 }
@@ -207,13 +207,13 @@ $(document).ready(function () {
             ctl00$contenido$ddlMunicipio: {
                 validators: {
                     notEmpty: {
-                        message: 'EEste campo es obligatorio y no debe estar vacio.'
+                        message: 'Debes seleccionar un municipio de la lista desplegable.'
                     },
                     callback: {
                         message: 'Se debe seleecionar un municipio.',
 
                         callback: function (value, validator, $field) {
-                            return (value.length > 5 || value.length < 32);
+                            return (value > 0 && value < 2279);
                         }
                     }
                 }
@@ -226,44 +226,36 @@ $(document).ready(function () {
                     },
                     regexp: {
                         regexp: /(^([0-9]{5,5})|^)$/,
-                        message: 'El cogigo postal debe ser numerico'
-                    },
-                    stringLength: {
-                        min: 5,
-                        max: 5,
-
-                        message: 'La longitud debe ser de 5 digitos exactamente.'
+                        message: 'El código postal se debe componer de 5 dígitos numéricos'
                     }
                 }
             },
             ctl00$contenido$txtDomicilio: {
-                message: 'Domicilio no valid0',
+                message: 'Domicilio no valido',
                 validators: {
                     notEmpty: {
                         message: 'Este campo es obligatorio y no debe estar vacio.'
                     },
                     regexp: {
                         regexp: /^[a-zA-Z\s]+([#]?[0-9\s]{1,4})?([a-zA-Z\s]{1,1})?$/,
-                        message: 'la direccion debe iniciar con letras ej: itsur ó itsur#23 ó itsur#1234A'
+                        message: 'La direccion debe contener al menos 5 caracteres y debe iniciar con letras ej: itsur ó itsur#23 ó itsur#1234A'
                     },
                     stringLength: {
                         min: 5,
-                        max: 100,
-
-                        message: 'La longitud MAXIMA debe ser de 100 caracteres'
+                        max: 80,
+                        message: 'La longitud del domicilio de ser entre 5 y 80 caracteres'
                     }
                 }
             },
             ctl00$contenido$Giro: {
                 validators: {
                     notEmpty: {
-                        message: 'Este campo es obligatorio y no debe estar vacio.'
+                        message: 'Es necesario indicar que tipo de GIRO tiene la empresa.'
                     },
                     callback: {
-                        message: 'Es necesario indicar que tipo de GIRO de la empresa',
-
+                        message: 'Es necesario indicar que tipo de GIRO tiene la empresa',
                         callback: function (value, validator, $field) {
-                            return (value.length > 0 || value.length < 11);
+                            return (value.length > 3 || value.length < 11);
                         }
                     }
                 }
@@ -271,31 +263,26 @@ $(document).ready(function () {
             ctl00$contenido$Sector: {
                 validators: {
                     notEmpty: {
-                        message: 'Es necesario indicar que tipo de usiario sera'
+                        message: 'Es necesario indicar de que tipo de sector es la empresa'
                     },
                     callback: {
                         message: 'Es necesario indicar el tipo de sector de la empresa',
 
                         callback: function (value, validator, $field) {
-                            return (value.length > 0 || value.length < 11);
+                            return (value.length > 6 || value.length < 11);
                         }
                     }
                 }
             },
             ctl00$contenido$txtTelefono: {
-                message: 'Telefono no es valido',
+                message: 'El Telefono no es valido',
                 validators: {
                     notEmpty: {
                         message: 'Este campo es obligatorio y no debe estar vacio.'
                     },
-                    regexp: {
-                        regexp: /^[(]{0,1}[+]*[0-9]{2,2}[)]{0,1}[-\s\./0-9]*$/,
-                        message: 'El telefono debe ser numerico ej. (+52) 445-135-35-30'
-                    },
-                    stringLength: {
-                        min: 7,
-                        max: 50,
-                        message: 'Al menos debe tener 7 digitos'
+                    phone: {
+                        country: 'US',
+                        message: 'El número de teléfono no es valido, solo debe contener 10 digitos numéricos'
                     }
                 }
             }, ctl00$contenido$txtMision: {
@@ -306,12 +293,12 @@ $(document).ready(function () {
                     },
                     regexp: {
                         regexp: /^[a-zA-Z\s]+$/,
-                        message: 'La mision debe ser validas y solamente se admited letras'
+                        message: 'La mision debe ser valida y solamente se admiten letras'
                     },
                     stringLength: {
-                        min: 7,
+                        min: 5,
                         max: 100,
-                        message: 'Indica las características más importantes de la mision con un MAXIMO de 100 caracteres'
+                        message: 'Indica las características más importantes de la mision con una longitud de 5 a 100 caracteres'
                     }
                 }
             }

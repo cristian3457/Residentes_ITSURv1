@@ -31,7 +31,7 @@
             </div>
             <div class="form-group col-md-4 pl-5">
                 <label for="txtSueldo" class="ml-3 texto_etiquetas">Sueldo Mensual</label>
-                <asp:TextBox ID="txtSueldo" placeholder="$2,500 - $3,800" type="text" autocomplete="off" class="form-control" runat="server" required></asp:TextBox>
+                <asp:TextBox ID="txtSueldo" placeholder="$2,500 - $3,800" type="text" autocomplete="off" class="form-control" runat="server"></asp:TextBox>
             </div>
             <div class="form-group col-md-4 pl-5 pr-4">
                 <label for="ddlCarrera" class="ml-3 texto_etiquetas">Carrera institucional</label>

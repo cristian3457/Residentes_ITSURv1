@@ -108,7 +108,7 @@ $(document).ready(function () {
 
     $('#FrmSolicitarResidentes').bootstrapValidator({
         framework: 'bootstrap',
-        excluded: [':disabled', ':hidden'],
+        excluded: [':disabled', ':hidden'], 
         fields: {
             ctl00$contenido$txtPerfil: {
                 message: 'Perfil no valido',
@@ -121,9 +121,18 @@ $(document).ready(function () {
                         message: 'El perfil deben solamente de letras'
                     },
                     stringLength: {
-                        min: 7,
+                        min: 5,
                         max: 50,
-                        message: 'La longitud MAXIMA son 50 caracteres'
+                        message: 'La longitud del perfil debe ser entre 5 y 50 caracteres'
+                    }
+                }
+            }, 
+            ctl00$contenido$txtSueldo: {
+                message: 'Sueldo no valido',
+                validators: {
+                    stringLength: {
+                        max: 20,
+                        message: 'La longitud del sueldo puede contener hasta 20 caracteres'
                     }
                 }
             }, 
@@ -154,7 +163,7 @@ $(document).ready(function () {
                     stringLength: {
                         min: 10,
                         max: 150,
-                        message: 'La longitud MAXIMA es de 150 caracteres'
+                        message: 'La longitud de este campo debe ser de entre 10 y 150 caracteres'
                     }
                 }
             },
@@ -171,12 +180,12 @@ $(document).ready(function () {
                     stringLength: {
                         min: 10,
                         max: 150,
-                        message: 'La longitud MAXIMA es de 150 caracteres'
+                        message: 'La longitud de este campo debe ser de entre 10 y 150 caracteres'
                     }
                 }
             },
             txtActividades: {
-                message: 'Contraseña no valida',
+                message: 'Texto no valido',
                 validators: {
                     notEmpty: {
                         message: 'Este campo es obligatorio y no debe estar vacio.'
@@ -188,7 +197,7 @@ $(document).ready(function () {
                     stringLength: {
                         min: 10,
                         max: 150,
-                        message: 'La longitud MAXIMA es de 150 caracteres'
+                        message: 'La longitud de este campo debe ser de entre 10 y 150 caracteres'
                     }
                 }
             }

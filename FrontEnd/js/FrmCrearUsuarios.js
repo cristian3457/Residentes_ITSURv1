@@ -87,7 +87,7 @@ $(document).ready(function () {
                 message: 'Tipo de usuario no valido',
                 validators: {
                     notEmpty: {
-                        message: 'Es necesario indicar que tipo de usiario sera'
+                        message: 'Es necesario indicar el tipo de usuario'
                     },
                     callback: {
                         message: 'El tipo de usuario no es válido',

@@ -72,7 +72,7 @@
         <div class="form-row">
             <div class="form-group col-md-6 pl-4">
                 <label for="txtTelefono" class="ml-3 texto_etiquetas">Teléfono</label>
-                <asp:TextBox ID="txtTelefono" placeholder="(+52) 445 445 6789" type="tel" autocomplete="off" class="form-control col-md-8" runat="server" required></asp:TextBox>
+                <asp:TextBox ID="txtTelefono" placeholder="445 445 6789" type="tel" autocomplete="off" class="form-control col-md-8" runat="server" required></asp:TextBox>
             </div>
             <div class="form-group col-md-6 pl-4">
                 <label for="txtMision" class="ml-3 texto_etiquetas">Misión</label>
