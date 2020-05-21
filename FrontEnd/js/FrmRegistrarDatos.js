@@ -56,23 +56,16 @@ $(document).ready(function () {
             else if (ramoServicios) {
                 giro = "Servicios";
             }
-
-            var datos = "{ 'nombre' : '" + empresa + "',";
-            datos += "'email' : '" + email + "',";
-            datos += "'id_estado' : '" + id_estado + "',";
-            datos += "'id_municipio' : '" + id_municipio + "',";
-            datos += "'codigo_postal' : " + cp + ",";
-            datos += "'domicilio' : '" + domicilio + "',";
-            datos += "'giro' : '" + giro + "',";
-            datos += "'sector' : '" + sector + "',";
-            datos += "'telefono' : '" + telefono + "',";
-            datos += "'mision' : '" + mision + "'}";
+            let obj = {}; obj.nombre = empresa; obj.email = email; obj.id_estado = id_estado; obj.id_municipio = id_municipio;
+            obj.codigo_postal = cp; obj.domicilio = domicilio; obj.giro = giro; obj.sector = sector;
+            obj.telefono = telefono; obj.mision = mision;
+            var json = "{'info' : '" + JSON.stringify(obj) + "'}";
             var btn = document.getElementById("btnRegistrar");
             if (btn.value == "Registrar") {
                 $.ajax({
                     type: 'POST',
                     url: 'ws/WSDatosContacto.asmx/insert',
-                    data: datos,
+                    data: json,
                     contentType: 'application/json; utf-8',
                     dataType: 'json',
                     success: function (data) {
@@ -84,27 +77,26 @@ $(document).ready(function () {
                         }
                     },
                     error: function (jqXHR, textStatus, errorThrown) {
-                        alert(textStatus + " --- " + errorThrown + "--- ");
+                        if (jqXHR.responseJSON.ExceptionType == "System.Exception") {
+                            $("#msgError").text(jqXHR.responseJSON.Message);
+                            $("#mdlError").modal().show();
+                        } else if (jqXHR.responseJSON.ExceptionType == "System.Security.SecurityException") {
+                            Response.load("FrmLogin.aspx");
+                        }
                     }
                 });
             }
             else if (btn.value == "Editar") {
                 id = localStorage.getItem("id_empresa");
                 if (id != null) {
-                    var actualizar_datos = "{ 'id_empresa' : '" + id + "'," + "'nombre' : '" + empresa + "',";
-                    actualizar_datos += "'email' : '" + email + "',";
-                    actualizar_datos += "'id_estado' : '" + id_estado + "',";
-                    actualizar_datos += "'id_municipio' : '" + id_municipio + "',";
-                    actualizar_datos += "'codigo_postal' : '" + cp + "',";
-                    actualizar_datos += "'domicilio' : '" + domicilio + "',";
-                    actualizar_datos += "'giro' : '" + giro + "',";
-                    actualizar_datos += "'sector' : '" + sector + "',";
-                    actualizar_datos += "'telefono' : '" + telefono + "',";
-                    actualizar_datos += "'mision' : '" + mision + "'}";
+                    let obj = {}; obj.id_empresa = id; obj.nombre = empresa; obj.email = email; obj.id_estado = id_estado; obj.id_municipio = id_municipio;
+                    obj.codigo_postal = cp; obj.domicilio = domicilio; obj.giro = giro; obj.sector = sector;
+                    obj.telefono = telefono; obj.mision = mision;
+                    var json = "{'info' : '" + JSON.stringify(obj) + "'}";
                     $.ajax({
                         type: 'POST',
                         url: 'ws/WSDatosContacto.asmx/update',
-                        data: actualizar_datos,
+                        data: json,
                         contentType: 'application/json; utf-8',
                         dataType: 'json',
                         success: function (data) {
@@ -117,26 +109,35 @@ $(document).ready(function () {
                             }
                         },
                         error: function (jqXHR, textStatus, errorThrown) {
-                            alert(textStatus + " --- " + errorThrown + "--- ");
+                            if (jqXHR.responseJSON.ExceptionType == "System.Exception") {
+                                $("#msgError").text(jqXHR.responseJSON.Message);
+                                $("#mdlError").modal().show();
+                            } else if (jqXHR.responseJSON.ExceptionType == "System.Security.SecurityException") {
+                                Response.load("FrmLogin.aspx");
+                            }
                         }
                     });
                 } else if (id == null) {
                     var email_usuario = $("#contenido_txtEmailUsuario").val();
-                    var actualizar_datos = "{'nombre' : '" + empresa + "',";
-                    actualizar_datos += "'email' : '" + email + "',";
-                    actualizar_datos += "'id_estado' : '" + id_estado + "',";
-                    actualizar_datos += "'id_municipio' : '" + id_municipio + "',";
-                    actualizar_datos += "'codigo_postal' : '" + cp + "',";
-                    actualizar_datos += "'domicilio' : '" + domicilio + "',";
-                    actualizar_datos += "'giro' : '" + giro + "',";
-                    actualizar_datos += "'sector' : '" + sector + "',";
-                    actualizar_datos += "'telefono' : '" + telefono + "',";
-                    actualizar_datos += "'mision' : '" + mision + "',";
-                    actualizar_datos += "'email_usuario' : '" + email_usuario + "'}";
+                    //var actualizar_datos = "{'nombre' : '" + empresa + "',";
+                    //actualizar_datos += "'email' : '" + email + "',";
+                    //actualizar_datos += "'id_estado' : '" + id_estado + "',";
+                    //actualizar_datos += "'id_municipio' : '" + id_municipio + "',";
+                    //actualizar_datos += "'codigo_postal' : '" + cp + "',";
+                    //actualizar_datos += "'domicilio' : '" + domicilio + "',";
+                    //actualizar_datos += "'giro' : '" + giro + "',";
+                    //actualizar_datos += "'sector' : '" + sector + "',";
+                    //actualizar_datos += "'telefono' : '" + telefono + "',";
+                    //actualizar_datos += "'mision' : '" + mision + "',";
+                    //actualizar_datos += "'email_usuario' : '" + email_usuario + "'}";
+                    let obj = {};obj.nombre = empresa; obj.email = email; obj.id_estado = id_estado; obj.id_municipio = id_municipio;
+                    obj.codigo_postal = cp; obj.domicilio = domicilio; obj.giro = giro; obj.sector = sector;
+                    obj.telefono = telefono; obj.mision = mision; obj.email_usuario = email_usuario; 
+                    var json = "{'info' : '" + JSON.stringify(obj) + "'}";
                     $.ajax({
                         type: 'POST',
                         url: 'ws/WSDatosContacto.asmx/updatePorEmail',
-                        data: actualizar_datos,
+                        data: json,
                         contentType: 'application/json; utf-8',
                         dataType: 'json',
                         success: function (data) {
@@ -148,7 +149,12 @@ $(document).ready(function () {
                             }
                         },
                         error: function (jqXHR, textStatus, errorThrown) {
-                            alert(textStatus + " --- " + errorThrown + "--- ");
+                            if (jqXHR.responseJSON.ExceptionType == "System.Exception") {
+                                $("#msgError").text(jqXHR.responseJSON.Message);
+                                $("#mdlError").modal().show();
+                            } else if (jqXHR.responseJSON.ExceptionType == "System.Security.SecurityException") {
+                                Response.load("FrmLogin.aspx");
+                            }
                         }
                     });
                 }
@@ -395,7 +401,12 @@ function cargarDatosEmail(datos) {
                         }
                     },
                     error: function (jqXHR, textStatus, errorThrown) {
-                        alert(textStatus + " --- " + errorThrown + "--- ");
+                        if (jqXHR.responseJSON.ExceptionType == "System.Exception") {
+                            $("#msgError").text(jqXHR.responseJSON.Message);
+                            $("#mdlError").modal().show();
+                        } else if (jqXHR.responseJSON.ExceptionType == "System.Security.SecurityException") {
+                            Response.load("FrmLogin.aspx");
+                        }
                     }
                 });
             } else {
@@ -403,7 +414,12 @@ function cargarDatosEmail(datos) {
             }
         },
         error: function (jqXHR, textStatus, errorThrown) {
-            alert(textStatus + " --- " + errorThrown + "--- ");
+            if (jqXHR.responseJSON.ExceptionType == "System.Exception") {
+                $("#msgError").text(jqXHR.responseJSON.Message);
+                $("#mdlError").modal().show();
+            } else if (jqXHR.responseJSON.ExceptionType == "System.Security.SecurityException") {
+                Response.load("FrmLogin.aspx");
+            }
         }
     });
 }
@@ -447,7 +463,12 @@ function cargarDatosID() {
             }
         },
         error: function (jqXHR, textStatus, errorThrown) {
-            alert(textStatus + " --- " + errorThrown + "--- ");
+            if (jqXHR.responseJSON.ExceptionType == "System.Exception") {
+                $("#msgError").text(jqXHR.responseJSON.Message);
+                $("#mdlError").modal().show();
+            } else if (jqXHR.responseJSON.ExceptionType == "System.Security.SecurityException") {
+                Response.load("FrmLogin.aspx");
+            }
         }
     });
 }
@@ -462,7 +483,6 @@ function cambiarMunicipios(datos) {
             let municipios = JSON.parse(data.d);
             $('#contenido_ddlMunicipio').empty();
             for (i = 0; i < municipios.length; i++) {
-                //alert(municipios[i].municipio);
                 $('#contenido_ddlMunicipio').append('<option value="' + municipios[i].id_municipio + '">' + municipios[i].municipio + '</option>');
             }
         },

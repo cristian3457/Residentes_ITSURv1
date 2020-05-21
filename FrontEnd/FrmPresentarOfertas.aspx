@@ -3,6 +3,23 @@
 <%--        <link rel="stylesheet" href="css/estilos.css"/>--%>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="contenido" runat="server">
+                          <!-------------------INICIA MODAL ERROR---------------------->
+        <div class="modal" data-backdrop="static" id="mdlError" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">HA OCURRIDO UN ERROR</h5>
+                    </div>
+                    <div class="modal-body">
+                        <p><span id="msgError"></span></p>
+                    </div>
+                    <div class="modal-footer">
+                        <input id="btnAceptarError" data-dismiss="modal" class="btn btn-primary" type="button" value="Aceptar" />
+                    </div>
+                </div>
+            </div>
+        </div>
+                        <!--Termina modal Error -->
                         <% 
                             if (Session["tipo_usuario"] == null || Session["tipo_usuario"].ToString() == "")
                             {
@@ -78,7 +95,12 @@
                         }
                     },
                     error: function (jqXHR, textStatus, errorThrown) {
-                        alert(textStatus + " --- " + errorThrown + "--- ");
+                        if (jqXHR.responseJSON.ExceptionType == "System.Exception") {
+                            $("#msgError").text(jqXHR.responseJSON.Message);
+                            $("#mdlError").modal().show();
+                        } else if (jqXHR.responseJSON.ExceptionType == "System.Security.SecurityException") {
+                            Response.load("FrmLogin.aspx");
+                        }
                     }
                 });
             });
@@ -119,7 +141,12 @@
                     }
                 },
                 error: function (jqXHR, textStatus, errorThrown) {
-                    alert(textStatus + " --- " + errorThrown + "--- ");
+                    if (jqXHR.responseJSON.ExceptionType == "System.Exception") {
+                        $("#msgError").text(jqXHR.responseJSON.Message);
+                        $("#mdlError").modal().show();
+                    } else if (jqXHR.responseJSON.ExceptionType == "System.Security.SecurityException") {
+                        Response.load("FrmLogin.aspx");
+                    }
                 }
             });
         }

@@ -5,7 +5,6 @@
         $("#divContenido").load("FrmRegistrarDatos.aspx");
     });
 
-
     let tabla = $('#grvLista');
     tabla.empty();
     cargarDatos();
@@ -45,7 +44,9 @@ function cargarDatos() {
             $('#grvLista').DataTable();
         },
         error: function (jqXHR, textStatus, errorThrown) {
-            alert(textStatus + " --- " + errorThrown + "--- ");
+            if (jqXHR.responseJSON.ExceptionType == "System.Security.SecurityException") {
+                Response.load("FrmLogin.aspx");
+            }
         }
     });
 
@@ -64,7 +65,12 @@ function eliminar(id) {
             }
         },
         error: function (jqXHR, textStatus, errorThrown) {
-            alert(textStatus + " --- " + errorThrown + "--- ");
+            if (jqXHR.responseJSON.ExceptionType == "System.Exception") {
+                $("#msgError").text(jqXHR.responseJSON.Message);
+                $("#mdlError").modal().show();
+            } else if (jqXHR.responseJSON.ExceptionType == "System.Security.SecurityException") {
+                Response.load("FrmLogin.aspx");
+            }
         }
     });
 }

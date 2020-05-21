@@ -40,6 +40,23 @@
     </div>
   </div>
 </div>
+                          <!-------------------INICIA MODAL ERROR---------------------->
+        <div class="modal" data-backdrop="static" id="mdlError" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">HA OCURRIDO UN ERROR</h5>
+                    </div>
+                    <div class="modal-body">
+                        <p><span id="msgError"></span></p>
+                    </div>
+                    <div class="modal-footer">
+                        <input id="btnAceptarError" data-dismiss="modal" class="btn btn-primary" type="button" value="Aceptar" />
+                    </div>
+                </div>
+            </div>
+        </div>
+                        <!--Termina modal Error -->
                     <% 
                         if (Session["tipo_usuario"] == null || Session["tipo_usuario"].ToString() == "")
                         {

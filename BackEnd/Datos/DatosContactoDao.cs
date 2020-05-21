@@ -253,7 +253,7 @@ namespace BackEnd.Datos
                 Conexion.desconectar();
             }
         }
-        public bool updatePorEmail(DatosContacto obj, String email_usuario)
+        public bool updatePorEmail(DatosContacto obj)
         {
             try
             {

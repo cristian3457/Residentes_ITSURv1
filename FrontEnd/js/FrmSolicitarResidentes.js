@@ -30,20 +30,16 @@ $(document).ready(function () {
             if (email_usuario != null && id_oferta == null) {
                 var email_usuario = $("#contenido_txtEmailUsuario").val();
                 var sueldo = $("#contenido_txtSueldo").val();
-                var datos = "{ 'perfil' : '" + perfil + "',";
-                datos += "'carrera' : '" + carrera + "',";
-                datos += "'sueldo' : '" + sueldo + "',";
-                datos += "'solicito' : '" + solicito + "',";
-                datos += "'requisitos' : '" + requisitos + "',";
-                datos += "'actividades' : '" + actividades + "',";
-                datos += "'email' : '" + email_usuario + "'}";
+                let obj = {}; obj.perfil = perfil; obj.carrera = carrera; obj.sueldo = sueldo;
+                obj.solicito = solicito; obj.requisitos = requisitos; obj.actividades = actividades; obj.email = email_usuario;
                 var btn = document.getElementById("btnRegistrar");
 
                 if (btn.value == "REGISTRAR") {
+                    var json = "{'info' : '" + JSON.stringify(obj) + "'}";
                     $.ajax({
                         type: 'POST',
                         url: 'ws/WSOfertas.asmx/insert',
-                        data: datos,
+                        data: json,
                         contentType: 'application/json; utf-8',
                         dataType: 'json',
                         success: function (data) {
@@ -55,7 +51,12 @@ $(document).ready(function () {
                             }
                         },
                         error: function (jqXHR, textStatus, errorThrown) {
-                            alert(textStatus + " --- " + errorThrown + "--- ");
+                            if (jqXHR.responseJSON.ExceptionType == "System.Exception") {
+                                $("#msgError").text(jqXHR.responseJSON.Message);
+                                $("#mdlError").modal().show();
+                            } else if (jqXHR.responseJSON.ExceptionType == "System.Security.SecurityException") {
+                                Response.load("FrmLogin.aspx");
+                            }
                         }
                     });
                    
@@ -65,17 +66,13 @@ $(document).ready(function () {
             if (id_oferta != null && btnEditar == "Editar") {
                 var email_usuario = $("#contenido_txtEmailUsuario").val();
                 var sueldo = $("#contenido_txtSueldo").val();
-                var datos = "{ 'id_oferta' : '" + id_oferta + "',";
-                datos += "'perfil' : '" + perfil + "',";
-                datos += "'carrera' : '" + carrera + "',";
-                datos += "'sueldo' : '" + sueldo + "',";
-                datos += "'solicito' : '" + solicito + "',";
-                datos += "'requisitos' : '" + requisitos + "',";
-                datos += "'actividades' : '" + actividades + "'}";
+                let obj = {}; obj.id_oferta = id_oferta; obj.perfil = perfil; obj.carrera = carrera; obj.sueldo = sueldo;
+                obj.solicito = solicito; obj.requisitos = requisitos; obj.actividades = actividades;
+                var json = "{'info' : '" + JSON.stringify(obj) + "'}";
                 $.ajax({
                     type: 'POST',
                     url: 'ws/WSOfertas.asmx/update',
-                    data: datos,
+                    data: json,
                     contentType: 'application/json; utf-8',
                     dataType: 'json',
                     success: function (data) {
@@ -88,15 +85,15 @@ $(document).ready(function () {
                         }
                     },
                     error: function (jqXHR, textStatus, errorThrown) {
-                        alert(textStatus + " --- " + errorThrown + "--- ");
+                        if (jqXHR.responseJSON.ExceptionType == "System.Exception") {
+                            $("#msgError").text(jqXHR.responseJSON.Message);
+                            $("#mdlError").modal().show();
+                        } else if (jqXHR.responseJSON.ExceptionType == "System.Security.SecurityException") {
+                            Response.load("FrmLogin.aspx");
+                        }
                     }
                 });
             }
-
-
-
-
-
 
             var btnAceptar = document.getElementById("btnAceptar");
             btnAceptar.addEventListener('click', cerrar_modal);
@@ -205,9 +202,6 @@ $(document).ready(function () {
 
         }
     });
-
-
-
     
     var email_usuario = $("#contenido_txtEmailUsuario").val();
     var id_oferta = localStorage.getItem("id_oferta");
@@ -249,7 +243,12 @@ function cargarDatosEditar(datos) {
             $("#txtActividades").val(ofertas[0].actividades);
         },
         error: function (jqXHR, textStatus, errorThrown) {
-            alert(textStatus + " --- " + errorThrown + "--- ");
+            if (jqXHR.responseJSON.ExceptionType == "System.Exception") {
+                $("#msgError").text(jqXHR.responseJSON.Message);
+                $("#mdlError").modal().show();
+            } else if (jqXHR.responseJSON.ExceptionType == "System.Security.SecurityException") {
+                Response.load("FrmLogin.aspx");
+            }
         }
     });
 }
