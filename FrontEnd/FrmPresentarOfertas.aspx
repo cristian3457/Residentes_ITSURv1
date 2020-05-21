@@ -3,6 +3,15 @@
 <%--        <link rel="stylesheet" href="css/estilos.css"/>--%>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="contenido" runat="server">
+                        <% 
+                            if (Session["tipo_usuario"] == null || Session["tipo_usuario"].ToString() == "")
+                            {
+                                Response.Redirect("FrmLogin.aspx");
+                                Session["tipo_usuario"] = "";
+                            }
+                            else if (Session["tipo_usuario"].ToString() == "Empresa")
+                            {
+                    %>
     <form runat="server">
          <asp:HiddenField ID="txtEmailUsuario" runat="server" />
     
@@ -15,6 +24,8 @@
     </div>
     <!--fin contenedor-->
         </form>
+        <%}
+        else { Response.Redirect("FrmLogin.aspx"); }%>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="scripts" runat="server">
     <script>

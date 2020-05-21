@@ -23,6 +23,15 @@
             </div>
         </div>
     </nav>
+                        <% 
+                            if (Session["tipo_usuario"] == null || Session["tipo_usuario"].ToString() == "")
+                            {
+                                Response.Redirect("FrmLogin.aspx");
+                                Session["tipo_usuario"] = "";
+                            }
+                            else if (Session["tipo_usuario"].ToString() == "Administrador")
+                            {
+                    %>
     <form id="form1" runat="server">
         <div>
             <div id="contenedorReporte" style="height: 500px !important;">
@@ -31,6 +40,8 @@
             </div>
         </div>
     </form>
+        <%}
+        else { Response.Redirect("FrmLogin.aspx"); }%>
             <footer class="mt-auto py-3">
             <p id="linkItsur"><a href="http:\\www.itsur.edu.mx" target="_blank">Instituto Tecnológico Superior del Sur de Guanajuato</a></p>
             <div id="logoFooter">

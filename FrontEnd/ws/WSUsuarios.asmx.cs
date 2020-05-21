@@ -6,6 +6,9 @@ using System.Web.Services;
 using BackEnd.Datos;
 using BackEnd.Modelo;
 using System.Web.Script.Serialization;
+using System.Text.RegularExpressions;
+using System.Configuration;
+using System.Security;
 namespace FrontEnd.ws
 {
     /// <summary>
@@ -20,55 +23,115 @@ namespace FrontEnd.ws
     {
 
         [WebMethod(EnableSession = true)]
-        public bool updatePassword(String email, String password)
+        public bool updatePassword(String info)
         {
             if (Session["tipo_usuario"] != null)
             {
                 if (Session["tipo_usuario"].ToString() == "Administrador" || Session["tipo_usuario"].ToString() == "Empresa")
                 {
-                    Usuarios usuarios = new Usuarios();
-                    usuarios.email = email;
-                    usuarios.password = password;
-                    bool resultado = new UsuariosDao().updatePassword(usuarios);
-                    return resultado;
+                    try
+                    {
+                        JavaScriptSerializer jss = new JavaScriptSerializer();
+                        Usuarios u = jss.Deserialize<Usuarios>(info);
+                        Regex validarEmail = new Regex("^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\\.([a-zA-Z]{2,4})+");
+                        if (!validarEmail.IsMatch(u.email))
+                        {
+                            throw new Exception("Los datos proporcionados no son válidos, verifica la información");
+                        }
+                        Regex validarPassword = new Regex("(?=^.{8,16}$)((?=.*\\d)|(?=.*\\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$");
+                        if (!validarPassword.IsMatch(u.password))
+                        {
+                            throw new Exception("Los datos proporcionados no son válidos, verifica la información");
+                        }
+                        bool resultado = new UsuariosDao().updatePassword(u);
+                        return resultado;
+                    }
+                    catch (System.ArgumentNullException)
+                    {
+                        throw new Exception("Los datos proporcionados no son válidos, verifica la información");
+                    }
                 }
             }
-            return false;
+            throw new SecurityException();
         }
         [WebMethod(EnableSession = true)]
-        public bool update(int id_usuario, String email, String password, String tipo_usuario)
+        public bool update(String info)
         {
             if (Session["tipo_usuario"] != null)
             {
                 if (Session["tipo_usuario"].ToString() == "Administrador" || Session["tipo_usuario"].ToString() == "Empresa")
                 {
-                    Usuarios datos = new Usuarios();
-                    datos.id_usuario = id_usuario;
-                    datos.email = email;
-                    datos.password = password;
-                    datos.tipo_usuario = tipo_usuario;
-                    bool resultado = new UsuariosDao().updateUsuario(datos);
-                    return resultado;
+                    try
+                    {
+                        JavaScriptSerializer jss = new JavaScriptSerializer();
+                        Usuarios u = jss.Deserialize<Usuarios>(info);
+                        if (u.id_usuario.ToString().Length < 0)
+                        {
+                            throw new Exception("Los datos proporcionados no son válidos, verifica la información");
+                        }
+                        Regex validarEmail = new Regex("^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\\.([a-zA-Z]{2,4})+");
+                        if (!validarEmail.IsMatch(u.email))
+                        {
+                            throw new Exception("Los datos proporcionados no son válidos, verifica la información");
+                        }
+                        Regex validarPassword = new Regex("(?=^.{8,16}$)((?=.*\\d)|(?=.*\\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$");
+                        if (!validarPassword.IsMatch(u.password))
+                        {
+                            throw new Exception("Los datos proporcionados no son válidos, verifica la información");
+                        }
+                        if (u.tipo_usuario != "Empresa" && u.tipo_usuario != "Administrador")
+                        {
+                            throw new Exception("Los datos proporcionados no son válidos, verifica la información");
+                        }
+
+                        bool resultado = new UsuariosDao().updateUsuario(u);
+                        return resultado;
+                    }
+                    catch (System.ArgumentNullException)
+                    {
+                        throw new Exception("Los datos proporcionados no son válidos, verifica la información");
+                    }
                 }
             }
-            return false;
+
+            throw new SecurityException();
         }
         [WebMethod(EnableSession = true)]
-        public int insert(String email, String password, String tipo_usuario)
+        public int insert(String info)
         {
             if (Session["tipo_usuario"] != null)
             {
                 if (Session["tipo_usuario"].ToString() == "Administrador")
                 {
-                    Usuarios datos = new Usuarios();
-                    datos.email = email;
-                    datos.password = password;
-                    datos.tipo_usuario = tipo_usuario;
-                    int resultado = new UsuariosDao().insert(datos);
-                    return resultado;
+                    try
+                    {
+                        JavaScriptSerializer jss = new JavaScriptSerializer();
+                        Usuarios u = jss.Deserialize<Usuarios>(info);
+                        Regex validarEmail = new Regex("^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\\.([a-zA-Z]{2,4})+");
+                        if (!validarEmail.IsMatch(u.email))
+                        {
+                            throw new Exception("Los datos proporcionados no son válidos, verifica la información");
+                        }
+                        Regex validarPassword = new Regex("(?=^.{8,16}$)((?=.*\\d)|(?=.*\\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$");
+                        if (!validarPassword.IsMatch(u.password))
+                        {
+                            throw new Exception("Los datos proporcionados no son válidos, verifica la información");
+                        }
+                        if (u.tipo_usuario.ToString() != "Empresa" && u.tipo_usuario.ToString() != "Administrador")
+                        {
+                            throw new Exception("Los datos proporcionados no son válidos, verifica la información");
+                        }
+                       
+                        int resultado = new UsuariosDao().insert(u);
+                        return resultado;
+                    }
+                    catch (System.ArgumentNullException)
+                    {
+                        throw new Exception("Los datos proporcionados no son válidos, verifica la información");
+                    }
                 }
             }
-            return 0;
+            throw new SecurityException();
         }
         [WebMethod(EnableSession = true)]
         public String getAll()
@@ -81,20 +144,33 @@ namespace FrontEnd.ws
                     return jss.Serialize(new UsuariosDao().getAll());
                 }
             }
-            return "";
+            throw new SecurityException();
         }
         [WebMethod(EnableSession = true)]
         public String getOne(int id_usuario)
         {
             if (Session["tipo_usuario"] != null)
             {
+
                 if (Session["tipo_usuario"].ToString() == "Administrador" || Session["tipo_usuario"].ToString() == "Empresa")
                 {
-                    JavaScriptSerializer jss = new JavaScriptSerializer();
-                    return jss.Serialize(new UsuariosDao().getOne(id_usuario));
+                    try
+                    {
+                        if (id_usuario.ToString().Length < 0)
+                        {
+                            throw new Exception("Los datos proporcionados no son válidos, verifica la información");
+                        }
+                        JavaScriptSerializer jss = new JavaScriptSerializer();
+                        return jss.Serialize(new UsuariosDao().getOne(id_usuario));
+                    }
+                    catch (System.ArgumentNullException)
+                    {
+                        throw new Exception("Los datos proporcionados no son válidos, verifica la información");
+                    }
+
                 }
             }
-            return "";
+            throw new SecurityException();
         }
         [WebMethod(EnableSession = true)]
         public String delete(int id)
@@ -103,11 +179,22 @@ namespace FrontEnd.ws
             {
                 if (Session["tipo_usuario"].ToString() == "Administrador")
                 {
-                    JavaScriptSerializer jss = new JavaScriptSerializer();
-                    return jss.Serialize(new UsuariosDao().delete(id));
+                    try
+                    {
+                        if (id.ToString().Length < 0)
+                        {
+                            throw new Exception("Los datos proporcionados no son válidos, verifica la información");
+                        }
+                        JavaScriptSerializer jss = new JavaScriptSerializer();
+                        return jss.Serialize(new UsuariosDao().delete(id));
+                    }
+                    catch (System.ArgumentNullException)
+                    {
+                        throw new Exception("Los datos proporcionados no son válidos, verifica la información");
+                    }
                 }
             }
-            return "";
+            throw new SecurityException();
         }
     }
 

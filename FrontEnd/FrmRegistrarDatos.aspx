@@ -19,6 +19,15 @@
   </div>
 </div>
     <!--Termina modal información -->
+                        <% 
+                            if (Session["tipo_usuario"] == null || Session["tipo_usuario"].ToString() == "")
+                            {
+                                Response.Redirect("FrmLogin.aspx");
+                                Session["tipo_usuario"] = "";
+                            }
+                            else if (Session["tipo_usuario"].ToString() == "Empresa" || Session["tipo_usuario"].ToString() == "Administrador")
+                            {
+                    %>
 <form id="FrmRegistrarDatos" runat="server">
     <asp:HiddenField ID="txtEmailUsuario" runat="server" />
     <div class="formulario pb-5 universal">
@@ -86,6 +95,8 @@
     </div>
     
 </form>
+        <%}
+        else { Response.Redirect("FrmLogin.aspx"); }%>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="scripts" runat="server">
     <script src="js/bootstrapValidator.js"></script>

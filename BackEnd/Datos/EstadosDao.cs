@@ -35,9 +35,9 @@ namespace BackEnd.Datos
 
                 return lista;
             }
-            catch (Exception ex)
+            catch (MySqlException)
             {
-                return null;
+                throw new Exception("Se ha presentado un problema al obtener los datos");
             }
             finally
             {

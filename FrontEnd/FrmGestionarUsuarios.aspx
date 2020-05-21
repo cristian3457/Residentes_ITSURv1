@@ -41,34 +41,26 @@
   </div>
 </div>
     <!--Termina modal información -->  
-    <% 
-//                    if (Session["tipo_usuario"] == null)
-//            {
-//            }
-//if (Session["tipo_usuario"] == null || Session["tipo_usuario"].ToString() == "")
-//{
-//    Response.Redirect("FrmLogin.aspx");
-//}
-    %>
+                    <% 
+                        if (Session["tipo_usuario"] == null || Session["tipo_usuario"].ToString() == "")
+                        {
+                            Response.Redirect("FrmLogin.aspx");
+                            Session["tipo_usuario"] = "";
+                        }
+                        else if (Session["tipo_usuario"].ToString() == "Administrador")
+                        {
+                    %>
     <form runat="server">
         <div id="divContenido">
-<%--        <%
-            String tipo = Session["tipo_usuario"].ToString();
-        %>--%>
         <div class="containerPrincipal pl-3 pb-3 pr-3 mb-5">
                 <h1 class="pt-3 ">GESTIONAR USUARIOS</h1>
-<%--            <%
-                if (Session["tipo_usuario"].ToString()  == "Administrador")
-                {
-%>--%>
             <input id="btnRegistrar" type="button" value="Registrar" class="btn btn-success mb-4" onclick="Registrar()" />
             <table id="listaUsuarios" class="table table-bordered table-striped mb-3 mt-3 text-center"> </table>
             </div>
-            <%
-//}
-                 %>
                 </div>
     </form>
+        <%}
+        else { Response.Redirect("FrmLogin.aspx"); }%>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="scripts" runat="server">
     <script src="js/datatables.js"></script>

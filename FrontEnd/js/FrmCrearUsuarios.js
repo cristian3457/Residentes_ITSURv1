@@ -22,13 +22,13 @@ $(document).ready(function () {
             var password = $("#contenido_txtPassword").val();
             var tipo_usuario = $('#contenido_ddlTipoUsuario').val();
             var idUsuario = localStorage.getItem("id_usuario");
-            var datos = "{ 'email' : '" + email + "','password' : '" + password + "','tipo_usuario' : '" + tipo_usuario + "'}";
+            let obj = {}; obj.email = email; obj.password = password; obj.tipo_usuario = tipo_usuario;
             var btn = document.getElementById("btncrear");
             if (btn.value == "Registrar") {
-                crearUsuario(datos);
+                crearUsuario(obj);
             } else if (btn.value == "Editar") {
-                var datos = "{'id_usuario' : '" + idUsuario + "'," + " 'email' : '" + email + "','password' : '" + password + "','tipo_usuario' : '" + tipo_usuario + "'}";
-                actualizarUsuario(datos);
+                let obj = {}; obj.id_usuario = idUsuario; obj.email = email; obj.password = password; obj.tipo_usuario = tipo_usuario;
+                actualizarUsuario(obj);
             }
         } else {
             alert('con errores');
@@ -118,8 +118,6 @@ $(document).ready(function () {
         $('#divContenido').load('FrmGestionarUsuarios.aspx');
     });
     var btn = document.getElementById("btncrear");
-
-
 });
 
 function cargarDatos(id) {
@@ -135,7 +133,12 @@ function cargarDatos(id) {
             $("#contenido_txtEmail").val(usuario[0].email);
         },
         error: function (jqXHR, textStatus, errorThrown) {
-            alert(textStatus + " --- " + errorThrown + "--- ");
+            if (jqXHR.responseJSON.ExceptionType == "System.Exception") {
+                $("#msgError").text(jqXHR.responseJSON.Message);
+                $("#mdlError").modal().show();
+            } else if (jqXHR.responseJSON.ExceptionType == "System.Security.SecurityException") {
+                Response.load("FrmLogin.aspx");
+            }
         }
     });
 
@@ -143,41 +146,49 @@ function cargarDatos(id) {
 
 
 function crearUsuario(data) {
+    var json = "{'info' : '" + JSON.stringify(data) + "'}";
     $.ajax({
         type: 'POST',
         url: 'ws/WSUsuarios.asmx/insert',
-        data: data,
+        data: json,
         contentType: 'application/json; utf-8',
         dataType: 'json',
         success: function (data) {
             if (data.d > 0) {
                 $('#mdlInformacion').modal('show');
-            } else {
-                alert("Ese correo ya esta registrado, intenta utilizando uno diferente");
             }
         },
         error: function (jqXHR, textStatus, errorThrown) {
-            alert(textStatus + " --- " + errorThrown + "--- ");
+            if (jqXHR.responseJSON.ExceptionType == "System.Exception") {
+                $("#msgError").text(jqXHR.responseJSON.Message);
+                $("#mdlError").modal().show();
+            } else if (jqXHR.responseJSON.ExceptionType == "System.Security.SecurityException") {
+                Response.load("FrmLogin.aspx");
+            }
         }
     });
 
 }
 function actualizarUsuario(data) {
+    var json = "{'info' : '" + JSON.stringify(data) + "'}";
     $.ajax({
         type: 'POST',
         url: 'ws/WSUsuarios.asmx/update',
-        data: data,
+        data: json,
         contentType: 'application/json; utf-8',
         dataType: 'json',
         success: function (data) {
             if (data.d) {
                 $('#mdlInformacion').modal('show');
-            } else {
-                alert("Ese correo ya esta registrado, intenta utilizando uno diferente");
-            }
+            } 
         },
         error: function (jqXHR, textStatus, errorThrown) {
-            alert(textStatus + " --- " + errorThrown + "--- ");
+            if (jqXHR.responseJSON.ExceptionType == "System.Exception") {
+                $("#msgError").text(jqXHR.responseJSON.Message);
+                $("#mdlError").modal().show();
+            } else if (jqXHR.responseJSON.ExceptionType == "System.Security.SecurityException") {
+                Response.load("FrmLogin.aspx");
+            }
         }
     });
 }

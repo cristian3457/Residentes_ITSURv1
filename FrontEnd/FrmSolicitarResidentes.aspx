@@ -2,7 +2,15 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="contenido" runat="server">
-
+                                <% 
+                        if (Session["tipo_usuario"] == null || Session["tipo_usuario"].ToString() == "")
+                        {
+                            Response.Redirect("FrmLogin.aspx");
+                            Session["tipo_usuario"] = "";
+                        }
+                        else if (Session["tipo_usuario"].ToString() == "Empresa")
+                        {
+                    %>
     <form id="FrmSolicitarResidentes" runat="server">
                         <!-------------------INICIA MODAL INFORMACIÓN---------------------->
     <div class="modal"  data-backdrop="static" id="mdlInformacion" tabindex="-1" role="dialog">
@@ -61,6 +69,8 @@
         </div>
         </div>
     </form>
+        <%}
+        else { Response.Redirect("FrmLogin.aspx"); }%>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="scripts" runat="server">
     <script src="js/bootstrapValidator.js"></script>

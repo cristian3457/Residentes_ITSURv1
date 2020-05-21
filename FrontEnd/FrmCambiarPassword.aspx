@@ -2,6 +2,15 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="contenido" runat="server">
+                    <% 
+                        if (Session["tipo_usuario"] == null || Session["tipo_usuario"].ToString() == "")
+                        {
+                            Response.Redirect("FrmLogin.aspx");
+                            Session["tipo_usuario"] = "";
+                        }
+                        else if (Session["tipo_usuario"].ToString() == "Empresa" || Session["tipo_usuario"].ToString() == "Administrador")
+                        {
+                    %>
     <form id="FrmCambiarPassword" runat="server">
       <!-------------------INICIA MODAL INFORMACIÓN---------------------->
         <div class="modal" data-backdrop="static" id="mdlInformacion" tabindex="-1" role="dialog">
@@ -20,6 +29,23 @@
             </div>
         </div>
                         <!--Termina modal información -->
+                      <!-------------------INICIA MODAL ERROR---------------------->
+        <div class="modal" data-backdrop="static" id="mdlError" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">HA OCURRIDO UN ERROR</h5>
+                    </div>
+                    <div class="modal-body">
+                        <p><span id="msgError"></span></p>
+                    </div>
+                    <div class="modal-footer">
+                        <input id="btnAceptarError" data-dismiss="modal" class="btn btn-primary" type="button" value="Aceptar" />
+                    </div>
+                </div>
+            </div>
+        </div>
+                        <!--Termina modal Error -->
 
     <div class="contenedorPassword">
        <div id="divMsg" class="alert alert-danger" style="display:none;" runat="server">
@@ -55,6 +81,8 @@
             </div>
     </div>
 </form>
+    <%}
+        else { Response.Redirect("FrmLogin.aspx"); }%>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="scripts" runat="server">
    <script src="js/bootstrapValidator.js"></script>

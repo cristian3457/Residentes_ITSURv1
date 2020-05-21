@@ -24,11 +24,11 @@
             <div class="col-md-7 items">
                 <% 
                     if (Session["tipo_usuario"] == null || Session["tipo_usuario"].ToString()=="") {
-                        //Response.Redirect("FrmLogin.aspx");
+                        Response.Redirect("FrmLogin.aspx");
                         Session["tipo_usuario"] = "";
                     } %>
                 <% 
-                    if (Session["tipo_usuario"].ToString() == "Empresa") {
+                    else if (Session["tipo_usuario"].ToString() == "Empresa") {
                 %>
                 <ul class="empresa">
                     <li><a href="#" class="activo" id="principal">PRINCIPAL</a></li>
@@ -39,7 +39,7 @@
                 </ul>
                 <% } %>
                 <% 
-                    if (Session["tipo_usuario"].ToString()  == "Administrador") {
+                    else if (Session["tipo_usuario"].ToString()  == "Administrador") {
                 %>
                 <ul class="administrador">
                     <li><a href="#" style="font-size:12px !important;" class="activo" id="principal">PRINCIPAL</a></li>

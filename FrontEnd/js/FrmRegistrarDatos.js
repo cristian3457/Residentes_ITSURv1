@@ -307,8 +307,6 @@ $(document).ready(function () {
         }
     });
 
-
-    debugger;
     var id = localStorage.getItem("id_empresa");
     localStorage.setItem("id_municipio", null);
     var email_usuario = $("#contenido_txtEmailUsuario").val();

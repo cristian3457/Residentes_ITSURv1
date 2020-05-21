@@ -30,7 +30,7 @@ namespace BackEnd.Datos
             }
             catch (MySqlException ex)
             {
-                return false;
+                throw new Exception("No se puede establecer la conexión con el servidor");
             }
         }
 

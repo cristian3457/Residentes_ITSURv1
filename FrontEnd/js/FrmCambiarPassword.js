@@ -8,19 +8,18 @@ $(document).ready(function () {
 
     $("#btncambiar").click(function () {
         $("#FrmCambiarPassword").data('bootstrapValidator').validate();
-
         if ($("#FrmCambiarPassword").data('bootstrapValidator').isValid()) {
             var email = localStorage.getItem("email");
             var password = $("#contenido_txtPassword").val();
             var email_usuario = $("#contenido_txtEmailUsuario").val();
             var tipo_usuario = $("#contenido_txtTipoUsuario").val();
             if (email != null) {
-                var datos = "{ 'email' : '" + email + "','password' : '" + password + "'}";
-                cambiarPassword(datos);
+                let obj = {}; obj.email = email; obj.password = password;
+                cambiarPassword(obj);
             }
             else if (email_usuario != null) {
-                var datos = "{ 'email' : '" + email_usuario + "','password' : '" + password + "'}";
-                cambiarPassword(datos);
+                let obj = {}; obj.email = email_usuario; obj.password = password;
+                cambiarPassword(obj);
             }
         } else {
             alert('con errores');
@@ -77,10 +76,11 @@ $(document).ready(function () {
 
 
 function cambiarPassword(datos) {
+    var json = "{'info' : '" + JSON.stringify(datos) + "'}";
     $.ajax({
         type: 'POST',
         url: 'ws/WSUsuarios.asmx/updatePassword',
-        data: datos,
+        data: json,
         contentType: 'application/json; utf-8',
         dataType: 'json',
         success: function (data) {
@@ -92,7 +92,12 @@ function cambiarPassword(datos) {
             }
         },
         error: function (jqXHR, textStatus, errorThrown) {
-            alert(textStatus + " --- " + errorThrown + "--- ");
+            if (jqXHR.responseJSON.ExceptionType == "System.Exception") {
+                $("#msgError").text(jqXHR.responseJSON.Message);
+                $("#mdlError").modal().show();
+            } else if (jqXHR.responseJSON.ExceptionType == "System.Security.SecurityException") {
+                Response.load("FrmLogin.aspx");
+            }
         }
     });
 }
