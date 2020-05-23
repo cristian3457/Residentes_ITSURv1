@@ -1,4 +1,5 @@
-﻿function mostrarOcultar(btn) {
+﻿// Función que muestra u oculta algunos datos de las cards de las ofertas para residentes
+function mostrarOcultar(btn) {
     var btnVerMas = $("#verMas" + btn);
     var valor = btnVerMas.val();
     if (valor == "Ver Más") {
@@ -9,10 +10,14 @@
         btnVerMas.val("Ver Más");
     }
 }
+// Función que se dispara cuando se presiona un icono, obtiene el nombre que se presiono, para posteriormente armar
+// un json que se le pasa a la función cargarOfertasArea para que se carguen las ofertas que estan registradas de esa área
 function filtrarBusquedaArea(area) {
     var datos = "{'carrera' : '" + area + "'}";
     cargarOfertasArea(datos);
 }
+// Función que obtiene el municipio que se selecciono de la lista desplegable y que ejecuta una petición ajax al servicio web
+// buscarOfertasMunicipio para que cargue las ofertas que hay registradas en ese municipio
 function cargarOfertasMunicipio(datos) {
     let ofertas = $('#ofertasEncontradas');
     ofertas.empty();
@@ -25,6 +30,7 @@ function cargarOfertasMunicipio(datos) {
         success: function (data) {
             let datos_cards = JSON.parse(data.d);
             if (datos_cards.length > 0) {
+                // Ciclo que genera las cards que esten registradas hasta el momento en el municipio que se selecciono
                 for (i = 0; i < datos_cards.length; i++) {
                     var divCardIndividual = $("<div class='card cardIndividual'></div>");
                     ofertas.append(divCardIndividual);
@@ -41,7 +47,8 @@ function cargarOfertasMunicipio(datos) {
                     divBotones.append("<input type='button' id='verMas" + i + "' onclick='mostrarOcultar(" + i + ")' style='padding:10px 25px!important;margin:0 auto !important;' class='btn btn-primary btnVerMas' value='Ver Más' />");
                     $(".card-text.pOcultar" + i).css("display", "none");
                 }
-            } else {
+            }// En caso de que aun no se hayan registrado ofertas para residentes en dicho municipio, se muestra el siguiente mensaje
+            else {
                 ofertas.append("<h3 class='text-center'>NO SE HAN ENCONTRADO RESULTADOS INTENTA CON OTROS MUNICIPIOS</h3>");
             }
         },
@@ -55,6 +62,7 @@ function cargarOfertasMunicipio(datos) {
         }
     });
 }
+// Función que carga las ofertas por el área que se selecciono
 function cargarOfertasArea(datos) {
     let ofertas = $('#ofertasEncontradas');
     ofertas.empty();
@@ -67,6 +75,7 @@ function cargarOfertasArea(datos) {
         success: function (data) {
             let datos_cards = JSON.parse(data.d);
             if (datos_cards.length > 0) {
+                // Ciclo que genera las cards de las ofertas que estan registradas hasta ese momento en dicha área
                 for (i = 0; i < datos_cards.length; i++) {
                     var divCardIndividual = $("<div class='card cardIndividual'></div>");
                     ofertas.append(divCardIndividual);
@@ -83,7 +92,8 @@ function cargarOfertasArea(datos) {
                     divBotones.append("<input type='button' id='verMas" + i + "' onclick='mostrarOcultar(" + i + ")' style='padding:10px 25px!important;margin:0 auto !important;' class='btn btn-primary btnVerMas' value='Ver Más' />");
                     $(".card-text.pOcultar" + i).css("display", "none");
                 }
-            } else {
+            }// En caso de que aun no se hayan registrado ofertas para residentes en dicha área, se muestra el siguiente mensaje
+            else {
                 ofertas.append("<h3 class='text-center'>NO SE HAN ENCONTRADO RESULTADOS INTENTA CON OTROS MUNICIPIOS</h3>");
             }
         },

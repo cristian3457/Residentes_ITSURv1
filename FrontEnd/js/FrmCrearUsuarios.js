@@ -1,41 +1,46 @@
-﻿
+﻿// función inicial de javascript
 $(document).ready(function () {
+    // Se obtienen los cotroles del formulario y se almacenan en variables para un mejor manejo
     var txtEmail = document.getElementById("contenido_txtEmail");
     var tipo_usuario = document.getElementById('contenido_ddlTipoUsuario');
     var txtContraseña = document.getElementById("contenido_txtPassword");
     var txtConfirmarContraseña = document.getElementById("contenido_txtConfirmarPassword");
+    // variables que almacenan expresiones regulares que tienen que cumplir algunos campos del formulario
     var validarPassword = /(?=^.{8,16}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/;
     var validarEmail = new RegExp("^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\\.([a-zA-Z]{2,4})+$");
-
+    // Variables que contienen el texto que se ingreso en los campos del formulario
     var contraseña = txtContraseña.value.trim();
     var confirmar_contraseña = txtConfirmarContraseña.value.trim();
     var email = txtEmail.value.trim();
     var tipo = tipo_usuario.value;
-
-
-
+    // Función que se dispara cuando se presiona el boton con el id btncrear que tiene el texto Registrar
     $("#btncrear").click(function () {
         $("#FrmCrearUsuarios").data('bootstrapValidator').validate();
-
+        // Si los campos del formulario cumplen con las validaciones arma el objeto json que contendra los datos del usuario a crear
         if ($("#FrmCrearUsuarios").data('bootstrapValidator').isValid()) {
             var email = $("#contenido_txtEmail").val();
             var password = $("#contenido_txtPassword").val();
             var tipo_usuario = $('#contenido_ddlTipoUsuario').val();
             var idUsuario = localStorage.getItem("id_usuario");
+            // Se arma el objeto json con los valores de los campos que escribio el administrador
             let obj = {}; obj.email = email; obj.password = password; obj.tipo_usuario = tipo_usuario;
             var btn = document.getElementById("btncrear");
+            // Si se cumple la validación de que el texto del boton sea Registrar se manda llamar a la función crearUsuario
             if (btn.value == "Registrar") {
                 crearUsuario(obj);
-            } else if (btn.value == "Editar") {
+            }// Si se cumple la validación de que el texto del boton sea Editar se manda llamar a la función actualizarUsuario
+            else if (btn.value == "Editar") {
+                // Se arma el objeto json con los valores de los campos que escribio el administrador
                 let obj = {}; obj.id_usuario = idUsuario; obj.email = email; obj.password = password; obj.tipo_usuario = tipo_usuario;
                 actualizarUsuario(obj);
             }
-        } else {
-            alert('con errores');
+        }// Se muestra el mensaje si no se ha cumplido con los requisitos de cada campo del formulario
+        else {
+            $('#mdlValidacionCampos').modal('show'); 
         }
     });
 
-
+    // Función que valida al tiempo de que el usuario va ingresando los datos si son correctos, si no le va dando retroalimentación
     $('#FrmCrearUsuarios').bootstrapValidator({
         framework: 'bootstrap',
         excluded: [':disabled', ':hidden'],
@@ -102,24 +107,26 @@ $(document).ready(function () {
         }
     });
 
-
+    // Variable que almacena el id del usuario que se va a editar
     var idUsuario = localStorage.getItem("id_usuario");
+    // Si el id del usuario es diferente de null se cambia el texto del h1 y del boton del formulario para indicar que se va editar la información
     if (idUsuario != null) {
         $("#tituloUsuarios").text("EDITAR DATOS DE USUARIO")
         $("#btncrear").val("Editar");
         cargarDatos(idUsuario);
     }
-
+    // Función que se dispara cuando se presiona el boton del modal con el id btnAceptarInfo y se llena el divContenido con el formulario FrmGestionarUsuarios.aspx
     $("#btnAceptarInfo").click(function () {
         $('#divContenido').load('FrmGestionarUsuarios.aspx');
     });
+    // Función que se dispara cuando se presiona el boton cancelar del formulario y se llena el divContenido con el formulario FrmGestionarUsuarios.aspx
     $("#btncancelar").click(function () {
+        // Se remueve el valor que contenga la variable de sesión id_usuario para que cuando se quiera registrar un usuario, no muestre que se va a editar
         localStorage.removeItem("id_usuario");
         $('#divContenido').load('FrmGestionarUsuarios.aspx');
     });
-    var btn = document.getElementById("btncrear");
 });
-
+// Función que carga los datos del usuario que se selecciono de la tabla al presionar el boton editar
 function cargarDatos(id) {
     var datos = "{ 'id_usuario' : '" + parseInt(id) + "'}";
     $.ajax({
@@ -143,8 +150,7 @@ function cargarDatos(id) {
     });
 
 }
-
-
+// Función que sirve para crear un usuario
 function crearUsuario(data) {
     var json = "{'info' : '" + JSON.stringify(data) + "'}";
     $.ajax({
@@ -169,6 +175,7 @@ function crearUsuario(data) {
     });
 
 }
+// Función que sirve para actualizar los datos de los usuarios
 function actualizarUsuario(data) {
     var json = "{'info' : '" + JSON.stringify(data) + "'}";
     $.ajax({
@@ -192,5 +199,3 @@ function actualizarUsuario(data) {
         }
     });
 }
-
-

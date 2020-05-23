@@ -1,4 +1,6 @@
-﻿$(document).ready(function () {
+﻿// Función que se dispara cuando se detecta que se ha presionado una opción del header y llena el divContenido con
+// el formulario que corresponda segun la opción que se haya seleccionado de la barra del heder
+$(document).ready(function () {
     $("#principal").click(function () {
         $("#divContenido").load("FrmPrincipal.aspx");
     });
