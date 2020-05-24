@@ -48,7 +48,7 @@
     <script>
         $(document).ready(function () {
             var email_usuario = $("#contenido_txtEmailUsuario").val();
-            localStorage.removeItem("id_oferta");
+            window.sessionStorage.removeItem("id_oferta");
             if (email_usuario != null) {
                 var datos = "{'email_usuario' : '" + email_usuario + "'}";
                 mostrarOfertas(datos);
@@ -66,8 +66,8 @@
             }
         }
         function EditarOferta(id) {
-            localStorage.removeItem("id_oferta");
-            localStorage.setItem("id_oferta", id);
+            window.sessionStorage.removeItem("id_oferta");
+            window.sessionStorage.setItem("id_oferta", id);
             $(".contenedor").load("FrmSolicitarResidentes.aspx");
         }
         function EliminarOferta(id) {

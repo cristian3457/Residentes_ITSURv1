@@ -21,7 +21,7 @@ $(document).ready(function () {
             var email = $("#contenido_txtEmail").val();
             var password = $("#contenido_txtPassword").val();
             var tipo_usuario = $('#contenido_ddlTipoUsuario').val();
-            var idUsuario = localStorage.getItem("id_usuario");
+            var idUsuario = window.sessionStorage.getItem("id_usuario");
             // Se arma el objeto json con los valores de los campos que escribio el administrador
             let obj = {}; obj.email = email; obj.password = password; obj.tipo_usuario = tipo_usuario;
             var btn = document.getElementById("btncrear");
@@ -108,7 +108,7 @@ $(document).ready(function () {
     });
 
     // Variable que almacena el id del usuario que se va a editar
-    var idUsuario = localStorage.getItem("id_usuario");
+    var idUsuario = window.sessionStorage.getItem("id_usuario");
     // Si el id del usuario es diferente de null se cambia el texto del h1 y del boton del formulario para indicar que se va editar la información
     if (idUsuario != null) {
         $("#tituloUsuarios").text("EDITAR DATOS DE USUARIO")
@@ -122,7 +122,7 @@ $(document).ready(function () {
     // Función que se dispara cuando se presiona el boton cancelar del formulario y se llena el divContenido con el formulario FrmGestionarUsuarios.aspx
     $("#btncancelar").click(function () {
         // Se remueve el valor que contenga la variable de sesión id_usuario para que cuando se quiera registrar un usuario, no muestre que se va a editar
-        localStorage.removeItem("id_usuario");
+        window.sessionStorage.removeItem("id_usuario");
         $('#divContenido').load('FrmGestionarUsuarios.aspx');
     });
 });

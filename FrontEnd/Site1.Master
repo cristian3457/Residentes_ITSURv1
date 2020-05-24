@@ -90,9 +90,9 @@
     </script>
     <script>
         function destruir_sesion() {
-            sessionStorage.clear();
-            localStorage.removeItem("email");
-            localStorage.removeItem("id_empresa");
+            window.sessionStorage.clear();
+            window.sessionStorage.removeItem("email");
+            window.sessionStorage.removeItem("id_empresa");
             location.assign("FrmLogin.aspx");
         }
     </script>

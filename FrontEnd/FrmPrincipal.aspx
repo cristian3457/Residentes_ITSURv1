@@ -117,13 +117,13 @@
         }
         function Editar(btn) {
             let id = $(btn).closest("tr").children().first().text();
-            localStorage.removeItem("id_empresa");
-            localStorage.setItem("id_empresa",id);
+            window.sessionStorage.removeItem("id_empresa");
+            window.sessionStorage.setItem("id_empresa",id);
             $('#divContenido').load('FrmRegistrarDatos.aspx');
         }
         function Registrar() {
-            localStorage.removeItem("id_empresa");
-            localStorage.setItem("id_empresa", "vacio");
+            window.sessionStorage.removeItem("id_empresa");
+            window.sessionStorage.setItem("id_empresa", "vacio");
             $("#divContenido").load("FrmRegistrarDatos.aspx");
         }
         

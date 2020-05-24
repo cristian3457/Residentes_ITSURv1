@@ -28,7 +28,7 @@ $(document).ready(function () {
             // Variable que almacena el valor que tiene el campo oculto del lado del servidor, el valor que almacena es el email del usuario registrado como tipo empresa
             var email_usuario = $("#contenido_txtEmailUsuario").val();
             // Variable que almacena el id de la oferta que se selecciona
-            var id_oferta = localStorage.getItem("id_oferta");
+            var id_oferta = window.sessionStorage.getItem("id_oferta");
             if (email_usuario != null && id_oferta == null) {
                 var email_usuario = $("#contenido_txtEmailUsuario").val();
                 var sueldo = $("#contenido_txtSueldo").val();
@@ -87,7 +87,7 @@ $(document).ready(function () {
                     dataType: 'json',
                     success: function (data) {
                         if (data.d) {
-                            localStorage.removeItem("id_oferta");
+                            window.sessionStorage.removeItem("id_oferta");
                             $('#mdlInformacion').modal('show');
                         }
                         else {
@@ -216,7 +216,7 @@ $(document).ready(function () {
     });
     // Variables que almacenan el email del usario registrado y el id de la oferta seleccionada respectivamente
     var email_usuario = $("#contenido_txtEmailUsuario").val();
-    var id_oferta = localStorage.getItem("id_oferta");
+    var id_oferta = window.sessionStorage.getItem("id_oferta");
     // Si el id de la oferta es diferente de null, se indica en el formulario que se va a editar una oferta ya registrada
     if (id_oferta != null) {
         $("#btnRegistrar").val("Editar");
@@ -230,13 +230,13 @@ $(document).ready(function () {
     btnAceptar.addEventListener('click', cerrar_modal);
     // Función que se dispara cuando se presiona el boton cancelar del formulario y se carga el formulario FrmContenedor.aspx
     $("#btnCancelar").click(function () {
-        localStorage.removeItem("id_oferta");
+        window.sessionStorage.removeItem("id_oferta");
         window.location.assign("FrmContenedor.aspx");
     });
 });
 // Función que cierra el modal y muestra el formulario FrmContenedor.aspx
 function cerrar_modal(evento) {
-    localStorage.removeItem("id_oferta");
+    window.sessionStorage.removeItem("id_oferta");
     window.location.assign("FrmContenedor.aspx")
 }
 // Función que hace una petición ajax que mandara llamar al método web getOne que obtendra los datos de la oferta a editar

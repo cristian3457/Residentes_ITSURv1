@@ -77,7 +77,7 @@
             });
         });
         function Registrar() {
-            localStorage.removeItem("id_usuario");
+            window.sessionStorage.removeItem("id_usuario");
             $('#divContenido').load('FrmCrearUsuarios.aspx');
         }
     </script>

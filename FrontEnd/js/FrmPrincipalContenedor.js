@@ -8,6 +8,7 @@ $(document).ready(function () {
         $("#divContenido").load("FrmBuscarResidencias.aspx");
     });
     $("#solicitar_residentes").click(function () {
+        window.sessionStorage.removeItem("id_oferta");
         $("#divContenido").load("FrmSolicitarResidentes.aspx");
     });
     $("#registrar_datos").click(function () {

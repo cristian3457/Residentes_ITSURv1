@@ -99,7 +99,7 @@ $(document).ready(function () {
             // el servicio web update que actualizara los datos de contacto de la empresa
             else if (btn.value == "Editar") {
                 // Variable que almacena el texto que contenga la variable de sesion id_empresa 
-                id = localStorage.getItem("id_empresa");
+                var id = window.sessionStorage.getItem("id_empresa");
                 // Entra a esta validación si el contenido de la variable id es diferente de null
                 if (id != null) {
                     // Se arma el objeto json que sera pasado a la petición ajax
@@ -116,7 +116,7 @@ $(document).ready(function () {
                         success: function (data) {
                             if (data.d) {
                                 $('#mdlInformacion').modal('show');
-                                localStorage.removeItem("id_empresa");
+                                window.sessionStorage.removeItem("id_empresa");
                             }
                             else {
                                 $("#msgError").text("HA OCURRIDO UN ERROR, POR FAVOR VUELVELO A INTENTAR");
@@ -321,9 +321,9 @@ $(document).ready(function () {
         }
     });
 // Variable que almacena el valor de la variable de sesión id_empresa
-    var id = localStorage.getItem("id_empresa");
+    var id = window.sessionStorage.getItem("id_empresa");
     // Se cambia el valor de la variable de sesion id_municipio a null
-    localStorage.setItem("id_municipio", null);
+    window.sessionStorage.setItem("id_municipio", null);
     // Variable que almacena el valor que contiene el campo oculto del lado del sevidor contenido_txtEmailUsuario
     var email_usuario = $("#contenido_txtEmailUsuario").val();
     if (id == "vacio") {
@@ -334,7 +334,7 @@ $(document).ready(function () {
         var datos = "{ 'email' : '" + email_usuario + "'}";
         $.when(cargarDatosEmail(datos)).then(function () {
             setTimeout(function () {
-                var id_mun = localStorage.getItem("id_municipio");
+                var id_mun = window.sessionStorage.getItem("id_municipio");
                 if (id_mun != 0 && id_mun > 0) {
                     $("#contenido_ddlMunicipio").val(id_mun);
                     $('#contenido_ddlMunicipio').change();
@@ -345,7 +345,7 @@ $(document).ready(function () {
     else if (id != null) {
         $.when(cargarDatosID()).then(function () {
             setTimeout(function () {
-                var id_mun = localStorage.getItem("id_municipio");
+                var id_mun = window.sessionStorage.getItem("id_municipio");
                 if (id_mun != 0 && id_mun > 0) {
                     $("#contenido_ddlMunicipio").val(id_mun);
                     $('#contenido_ddlMunicipio').change();
@@ -362,7 +362,7 @@ $(document).ready(function () {
     });
      // Función que se dispara cuando se presiona el boton cancelar del formulario y se carga el formulario FrmContenedor.aspx
     $("#btnCancelar").click(function () {
-        localStorage.removeItem("id_empresa");
+        window.sessionStorage.removeItem("id_empresa");
         window.location.assign("FrmContenedor.aspx");
     });
 });
@@ -392,7 +392,7 @@ function cargarDatosEmail(datos) {
                     success: function (data) {
                         let empresa = JSON.parse(data.d);
                         // Código que carga los datos de la empresa en los campos del formualario
-                        localStorage.setItem("id_municipio", empresa[0].id_municipio);
+                        window.sessionStorage.setItem("id_municipio", empresa[0].id_municipio);
                         $("#contenido_txtEmpresa").val(empresa[0].nombre);
                         $("#contenido_txtEmail").val(empresa[0].email);
                         $("#contenido_ddlEstado").val(empresa[0].id_estado);
@@ -427,7 +427,7 @@ function cargarDatosEmail(datos) {
                     }
                 });
             } else {
-                localStorage.setItem("id_municipio", 0);
+                window.sessionStorage.setItem("id_municipio", 0);
             }
         },
         error: function (jqXHR, textStatus, errorThrown) {
@@ -445,7 +445,7 @@ function cargarDatosEmail(datos) {
 function cargarDatosID() {
     $("#titulo").text("EDITAR DATOS DE CONTACTO");
     $("#btnRegistrar").val("Editar");
-    var id = localStorage.getItem("id_empresa");
+    var id = window.sessionStorage.getItem("id_empresa");
     var datos = "{ 'id_empresa' : '" + parseInt(id) + "'}";
     $.ajax({
         type: 'POST',
@@ -456,7 +456,7 @@ function cargarDatosID() {
         success: function (data) {
             let empresa = JSON.parse(data.d);
             // Código que carga los datos de la empresa en los campos del formualario
-            localStorage.setItem("id_municipio", empresa[0].id_municipio);
+            window.sessionStorage.setItem("id_municipio", empresa[0].id_municipio);
             $("#contenido_txtEmpresa").val(empresa[0].nombre);
             $("#contenido_txtEmail").val(empresa[0].email);
             $("#contenido_ddlEstado").val(empresa[0].id_estado);

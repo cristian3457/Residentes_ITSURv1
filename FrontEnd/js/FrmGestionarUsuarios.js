@@ -36,7 +36,7 @@ function Eliminar(btn) {
     // Si se presiona el boton del modal con el id confirmarEliminar se manda llamar a la función eliminar para eliminar al usuario que se selecciono
     $("#confirmarEliminar").click(function () {
         eliminar(id);
-        localStorage.removeItem("id_usuario");
+        window.sessionStorage.removeItem("id_usuario");
     });
 }
 // Función que hace una petición ajax al servico web delete para eliminar al usuario con el id de la tabla que se selecciono
@@ -67,7 +67,7 @@ function eliminar(id) {
 // Cuando se presiona el boton se obtiene el id de ese usuario, ese id servira para cargar los datos del usuario a editar
 function Editar(btn) {
     let id = $(btn).closest("tr").children().first().text();
-    localStorage.removeItem("id_usuario");
-    localStorage.setItem("id_usuario", id);
+    window.sessionStorage.removeItem("id_usuario");
+    window.sessionStorage.setItem("id_usuario", id);
     $('#divContenido').load('FrmCrearUsuarios.aspx');
 }

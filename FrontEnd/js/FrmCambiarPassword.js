@@ -72,7 +72,7 @@ $(document).ready(function () {
     });
         // Función que se dispara cuando se presiona el boton cancelar del formulario y se carga el formulario FrmContenedor.aspx
     $("#btncancelar").click(function () {
-        localStorage.removeItem("email");
+        window.sessionStorage.removeItem("email");
         window.location.assign("FrmContenedor.aspx");
     });
 
@@ -90,7 +90,7 @@ function cambiarPassword(datos) {
         success: function (data) {
             if (data.d) {
                 $('#mdlInformacion').modal('show');
-                localStorage.removeItem("email");
+                window.sessionStorage.removeItem("email");
             } else {
                 $("#msgError").text("HA OCURRIDO UN ERROR, POR FAVOR VUELVELO A INTENTAR");
                 $("#mdlError").modal().show();

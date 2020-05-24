@@ -1,7 +1,7 @@
 ﻿// función inicial de javascript
 $(document).ready(function () {
     $("#btnRegistrar").click(function () {
-        localStorage.removeItem("id_empresa");
+        window.sessionStorage.removeItem("id_empresa");
         $("#divContenido").load("FrmRegistrarDatos.aspx");
     });
     // Variable que almacena el id de la tabla que cargara los datos de contacto de las empresas registradas
