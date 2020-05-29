@@ -122,9 +122,8 @@
             $('#divContenido').load('FrmRegistrarDatos.aspx');
         }
         function Registrar() {
-            window.sessionStorage.removeItem("id_empresa");
-            window.sessionStorage.setItem("id_empresa", "vacio");
-            $("#divContenido").load("FrmRegistrarDatos.aspx");
+        window.sessionStorage.removeItem("id_empresa");
+        $("#divContenido").load("FrmRegistrarDatos.aspx");
         }
         
     </script>

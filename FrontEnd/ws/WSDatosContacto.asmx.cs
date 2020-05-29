@@ -61,7 +61,8 @@ namespace FrontEnd.ws
             {
                 throw new Exception("Los datos proporcionados no son válidos, verifica la información");
             }
-            if (d.telefono.ToString().Length < 10 || d.domicilio.ToString().Length > 18)
+            int LongitudTelefono = d.telefono.ToString().Length;
+            if (LongitudTelefono < 10 || LongitudTelefono > 18)
             {
                 throw new Exception("Los datos proporcionados no son válidos, verifica la información");
             }
@@ -72,10 +73,10 @@ namespace FrontEnd.ws
             }
         }
         [WebMethod]
-        public List<Estados> getEstados()
+        public String getEstados()
         {
-            EstadosDao estados = new EstadosDao();
-            return estados.getAll().ToList();
+            JavaScriptSerializer jss = new JavaScriptSerializer();
+            return jss.Serialize(new EstadosDao().getAll());
         }
         [WebMethod]
         public String getMunicipios(string estado)

@@ -1,0 +1,104 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site1.master.cs" Inherits="FrontEnd.Site1" %>
+
+<!DOCTYPE html>
+
+<html class="h-100">
+    <head runat="server">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>RESIDENTES ITSUR </title>
+    <link rel="stylesheet" href="css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="css/header_footer.css"/>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body class="d-flex flex-column h-100">
+ <nav>
+        <div class="row fila universal">
+            <div class="col-1" id="logo">
+                <a href="#"><img src="imagenes/itsur.jfif" alt="logo ITSUR"/></a>
+            </div>
+            <div class="col-4" style="text-align: left; align-self: center; padding-left: 50px;">
+                <h2><a href="#">RESIDENTES ITSUR</a></h2>
+            </div>
+            <div class="col-md-7 items">
+                <% 
+                    if (Session["tipo_usuario"] == null || Session["tipo_usuario"].ToString()=="") {
+                        Response.Redirect("FrmLogin.aspx");
+                        Session["tipo_usuario"] = "";
+                    } %>
+                <% 
+                    else if (Session["tipo_usuario"].ToString() == "Empresa") {
+                %>
+                <ul class="empresa">
+                    <li><a href="#" class="activo" id="principal">PRINCIPAL</a></li>
+                    <li><a href="#" id="solicitar_residentes">SOLICITAR RESIDENTES</a></li>
+                    <li><a href="#" id="registrar_datos">REGISTRAR DATOS</a></li>
+                    <li><a href="#" id="cambiar_contraseña">CAMBIAR CONTRASEÑA</a></li>
+                    <li><a class="bg-danger text-white mr-3" href="#" onclick="destruir_sesion()">CERRAR SESIÓN</a></li>
+                </ul>
+                <% } %>
+                <% 
+                    else if (Session["tipo_usuario"].ToString()  == "Administrador") {
+                %>
+                <ul class="administrador">
+                    <li><a href="#" style="font-size:12px !important;" class="activo" id="principal">PRINCIPAL</a></li>
+                    <li><a id="gestionar_usuarios" style="font-size:12px !important;" href="#">GESTIONAR USUARIOS</a></li>
+                    <li><a href="#" style="font-size:12px !important;" id="cambiar_contraseña">CAMBIAR CONTRASEÑA</a></li>
+                    <li><a href="FrmGenerarReporte.aspx" target="_blank" style="font-size:12px !important;">GENERAR DOCUMENTO</a></li>
+                    <li><a class="bg-danger text-white mr-3" style="font-size:12px !important;" href="#" onclick="destruir_sesion()">CERRAR SESIÓN</a></li>
+                </ul>
+                <% } %>
+               
+            </div>
+
+        </div>
+    </nav>
+        <asp:ContentPlaceHolder ID="contenido" runat="server">
+            <br />
+            <br />
+            <br />
+        </asp:ContentPlaceHolder>
+    
+        <footer class="mt-auto py-3">
+            <br />
+            <br />
+            <br />
+            <p id="linkItsur"><a href="http:\\www.itsur.edu.mx" target="_blank">Instituto Tecnológico Superior del Sur de Guanajuato</a></p>
+            <div id="logoFooter">
+                <img  src="imagenes/logo.png" alt="logo ITSUR" />
+            </div>
+            <div id="halconFooter">
+                <img  src="imagenes/halcon.png" alt="Mascota halcon ITSUR" />
+            </div>
+            <p id="lemaITSUR" class="text-info">"Tecnología y calidad para la vida"</p>
+            <p id="telefonosITSUR" class="text-info">Tels. (445) 4577468 al 71. 4588278, 4588311 y 4588312</p>
+            <p id="domicilioITSUR1" class="text-info">Av. Educación Superior No. 2000, Colonia: Benito Juárez.</p>
+            <p id="domicilioITSUR2" class="text-right text-info">Uriangato, Gto. C.P. 38980 Ap. Postal No.61</p>
+            <p id="copyright" class="text-info">Todos los Derechos Reservados ITSUR 2020</p>
+        </footer>
+    <script src="js/jquery-3.4.1.js"></script>
+    <script src="js/bootstrap.js"></script>
+    <script src="js/FrmPrincipalContenedor.js"></script>
+        <script>
+        $(document).ready(function () {
+            $("div ul li a").click(function () {
+                $("div ul li a").removeClass("activo");
+                $(this).addClass("activo");    
+            });
+        });
+    </script>
+    <script>
+        function destruir_sesion() {
+            window.sessionStorage.clear();
+            window.sessionStorage.removeItem("email");
+            window.sessionStorage.removeItem("id_empresa");
+            location.assign("FrmLogin.aspx");
+        }
+    </script>
+    
+    <asp:ContentPlaceHolder ID="scripts" runat="server">
+    </asp:ContentPlaceHolder>
+</body>
+</html>
+

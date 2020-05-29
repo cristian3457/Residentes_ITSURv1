@@ -12,13 +12,13 @@ namespace FrontEnd
         protected void Page_Load(object sender, EventArgs e)
         {
             txtEmailUsuario.Value = "" + Session["email_usuario"];
-            ddlCarrera.Items.Add("Sistemas Automotrices");
-            ddlCarrera.Items.Add("Ambiental");
-            ddlCarrera.Items.Add("Industrial");
-            ddlCarrera.Items.Add("Gestion Empresarial");
-            ddlCarrera.Items.Add("Sistemas Computacionales");
-            ddlCarrera.Items.Add("Electrónica");
-            ddlCarrera.Items.Add("Gastronomia");
+            //ddlCarrera.Items.Add("Sistemas Automotrices");
+            //ddlCarrera.Items.Add("Ambiental");
+            //ddlCarrera.Items.Add("Industrial");
+            //ddlCarrera.Items.Add("Gestion Empresarial");
+            //ddlCarrera.Items.Add("Sistemas Computacionales");
+            //ddlCarrera.Items.Add("Electrónica");
+            //ddlCarrera.Items.Add("Gastronomia");
         }
     }
 }

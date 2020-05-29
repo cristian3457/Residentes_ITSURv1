@@ -1,0 +1,16 @@
+C:\Users\TEMP.Cristian_FN\Documents\GitHub\Residentes_ITSUR\Residentes_ITSURv1\Residentes_ITSURv1\BackEnd\bin\Release\BackEnd.exe.config
+C:\Users\TEMP.Cristian_FN\Documents\GitHub\Residentes_ITSUR\Residentes_ITSURv1\Residentes_ITSURv1\BackEnd\bin\Release\BackEnd.exe
+C:\Users\TEMP.Cristian_FN\Documents\GitHub\Residentes_ITSUR\Residentes_ITSURv1\Residentes_ITSURv1\BackEnd\bin\Release\BackEnd.pdb
+C:\Users\TEMP.Cristian_FN\Documents\GitHub\Residentes_ITSUR\Residentes_ITSURv1\Residentes_ITSURv1\BackEnd\bin\Release\EntityFramework.dll
+C:\Users\TEMP.Cristian_FN\Documents\GitHub\Residentes_ITSUR\Residentes_ITSURv1\Residentes_ITSURv1\BackEnd\bin\Release\EntityFramework.SqlServer.dll
+C:\Users\TEMP.Cristian_FN\Documents\GitHub\Residentes_ITSUR\Residentes_ITSURv1\Residentes_ITSURv1\BackEnd\bin\Release\MySql.Data.dll
+C:\Users\TEMP.Cristian_FN\Documents\GitHub\Residentes_ITSUR\Residentes_ITSURv1\Residentes_ITSURv1\BackEnd\bin\Release\MySql.Data.Entity.EF6.dll
+C:\Users\TEMP.Cristian_FN\Documents\GitHub\Residentes_ITSUR\Residentes_ITSURv1\Residentes_ITSURv1\BackEnd\bin\Release\EntityFramework.xml
+C:\Users\TEMP.Cristian_FN\Documents\GitHub\Residentes_ITSUR\Residentes_ITSURv1\Residentes_ITSURv1\BackEnd\bin\Release\EntityFramework.SqlServer.xml
+C:\Users\TEMP.Cristian_FN\Documents\GitHub\Residentes_ITSUR\Residentes_ITSURv1\Residentes_ITSURv1\BackEnd\bin\Release\MySql.Data.xml
+C:\Users\TEMP.Cristian_FN\Documents\GitHub\Residentes_ITSUR\Residentes_ITSURv1\Residentes_ITSURv1\BackEnd\bin\Release\MySql.Data.Entity.EF6.xml
+C:\Users\TEMP.Cristian_FN\Documents\GitHub\Residentes_ITSUR\Residentes_ITSURv1\Residentes_ITSURv1\BackEnd\obj\Release\BackEnd.csprojAssemblyReference.cache
+C:\Users\TEMP.Cristian_FN\Documents\GitHub\Residentes_ITSUR\Residentes_ITSURv1\Residentes_ITSURv1\BackEnd\obj\Release\BackEnd.csproj.CoreCompileInputs.cache
+C:\Users\TEMP.Cristian_FN\Documents\GitHub\Residentes_ITSUR\Residentes_ITSURv1\Residentes_ITSURv1\BackEnd\obj\Release\BackEnd.csproj.CopyComplete
+C:\Users\TEMP.Cristian_FN\Documents\GitHub\Residentes_ITSUR\Residentes_ITSURv1\Residentes_ITSURv1\BackEnd\obj\Release\BackEnd.exe
+C:\Users\TEMP.Cristian_FN\Documents\GitHub\Residentes_ITSUR\Residentes_ITSURv1\Residentes_ITSURv1\BackEnd\obj\Release\BackEnd.pdb

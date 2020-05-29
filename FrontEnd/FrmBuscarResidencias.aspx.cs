@@ -11,18 +11,7 @@ namespace FrontEnd
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!IsPostBack)
-            {
-                ddlMunicipioBusqueda.DataSource = new MunicipiosDao().getAllMunicipios();
-                ddlMunicipioBusqueda.DataValueField = "id_municipio";
-                ddlMunicipioBusqueda.DataTextField = "municipio";
-                ddlMunicipioBusqueda.DataBind();
-                ddlEstadoBusqueda.DataSource = new EstadosDao().getAll();
-                ddlEstadoBusqueda.DataValueField = "id_estado";
-                ddlEstadoBusqueda.DataTextField = "estado";
-                ddlEstadoBusqueda.DataBind();
 
-            }
         }
     }
 }

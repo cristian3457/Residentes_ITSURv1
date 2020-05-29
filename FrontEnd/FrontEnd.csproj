@@ -167,6 +167,7 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Web.config" />
+    <Content Include="ws\WSCarreras.asmx" />
     <Content Include="ws\WSDatosContacto.asmx" />
     <Content Include="ws\WSEmpresas.asmx" />
     <Content Include="ws\WSOfertas.asmx" />
@@ -273,6 +274,10 @@
       <DependentUpon>Site2.Master</DependentUpon>
     </Compile>
     <Compile Include="SqlServerTypes\Loader.cs" />
+    <Compile Include="ws\WSCarreras.asmx.cs">
+      <DependentUpon>WSCarreras.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="ws\WSDatosContacto.asmx.cs">
       <DependentUpon>WSDatosContacto.asmx</DependentUpon>
       <SubType>Component</SubType>
@@ -304,6 +309,7 @@
     <None Include="packages.config" />
     <Content Include="Site1.Master" />
     <Content Include="Site2.Master" />
+    <None Include="Properties\PublishProfiles\CustomProfile.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

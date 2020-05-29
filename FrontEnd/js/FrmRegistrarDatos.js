@@ -1,4 +1,4 @@
-﻿
+﻿var objEmpresa;
 $(document).ready(function () {
     // Se obtienen los cotroles del formulario y se almacenan en variables para un mejor manejo
     var txtEmpresa = document.getElementById("contenido_txtEmpresa");
@@ -37,7 +37,7 @@ $(document).ready(function () {
             var id_estado = document.getElementById('contenido_ddlEstado').value;
             var id_municipio = document.getElementById('contenido_ddlMunicipio').value;
             // Esta variable almacena al boton con el id btnAceptar
-            var btnAceptar = document.getElementById("btnAceptar");
+            var btnAceptar = document.getElementById("btnAceptarInfo");
             // Escuchador que se dispara cuando se presiona el boton con el id btnAceptar y cierra el modal
             btnAceptar.addEventListener('click', cerrar_modal);
             // Variables que almacenaran el giro y el sector que se haya seleccionado, las variables se llenaran de acuero
@@ -95,7 +95,7 @@ $(document).ready(function () {
                     }
                 });
             }
-             // Si el valor del boton es igual a Editar se entra a esta validación y se hace la petición ajax que ejecutara
+            // Si el valor del boton es igual a Editar se entra a esta validación y se hace la petición ajax que ejecutara
             // el servicio web update que actualizara los datos de contacto de la empresa
             else if (btn.value == "Editar") {
                 // Variable que almacena el texto que contenga la variable de sesion id_empresa 
@@ -133,13 +133,13 @@ $(document).ready(function () {
                         }
                     });
                 } // Entra a esta validación si el valor de la variable id es igual a null y se van a registrar los datos de la
-                // empresa, en esta validación es cuando la empresa se logueo y va registrar sus propios datps
+                // empresa, en esta validación es cuando la empresa se logueo y va registrar sus propios datos
                 else if (id == null) {
                     var email_usuario = $("#contenido_txtEmailUsuario").val();
                     // Se arma el objeto json que sera pasado a la petición ajax
-                    let obj = {};obj.nombre = empresa; obj.email = email; obj.id_estado = id_estado; obj.id_municipio = id_municipio;
+                    let obj = {}; obj.nombre = empresa; obj.email = email; obj.id_estado = id_estado; obj.id_municipio = id_municipio;
                     obj.codigo_postal = cp; obj.domicilio = domicilio; obj.giro = giro; obj.sector = sector;
-                    obj.telefono = telefono; obj.mision = mision; obj.email_usuario = email_usuario; 
+                    obj.telefono = telefono; obj.mision = mision; obj.email_usuario = email_usuario;
                     var json = "{'info' : '" + JSON.stringify(obj) + "'}";
                     $.ajax({
                         type: 'POST',
@@ -170,7 +170,7 @@ $(document).ready(function () {
         }
 
     });
-        // Código que verifica que cada campo del formulario cumpla con lo que se especifica dentro de esta función
+    // Código que verifica que cada campo del formulario cumpla con lo que se especifica dentro de esta función
     $('#FrmRegistrarDatos').bootstrapValidator({
         framework: 'bootstrap',
         excluded: [':disabled', ':hidden'],
@@ -320,47 +320,28 @@ $(document).ready(function () {
 
         }
     });
-// Variable que almacena el valor de la variable de sesión id_empresa
+    // Variable que almacena el valor de la variable de sesión id_empresa
     var id = window.sessionStorage.getItem("id_empresa");
     // Se cambia el valor de la variable de sesion id_municipio a null
     window.sessionStorage.setItem("id_municipio", null);
     // Variable que almacena el valor que contiene el campo oculto del lado del sevidor contenido_txtEmailUsuario
     var email_usuario = $("#contenido_txtEmailUsuario").val();
-    if (id == "vacio") {
-
-    }
     // Validación que si se cumple carga los datos de la empresa que se va a editar, cuando se ingresa como usuario de tipo empresa
-    else if (email_usuario != null && email_usuario != "" && id == null) {
+    if (email_usuario != null && email_usuario != "" && id == null) {
         var datos = "{ 'email' : '" + email_usuario + "'}";
-        $.when(cargarDatosEmail(datos)).then(function () {
-            setTimeout(function () {
-                var id_mun = window.sessionStorage.getItem("id_municipio");
-                if (id_mun != 0 && id_mun > 0) {
-                    $("#contenido_ddlMunicipio").val(id_mun);
-                    $('#contenido_ddlMunicipio').change();
-                }
-            }, 150);
-        });
+        cargarDatosEmail(datos);
     }// Validación que si se cumple carga los datos de la empresa que se selcciona para editar de la tabla, cuando se esta logueado como Administrador
     else if (id != null) {
-        $.when(cargarDatosID()).then(function () {
-            setTimeout(function () {
-                var id_mun = window.sessionStorage.getItem("id_municipio");
-                if (id_mun != 0 && id_mun > 0) {
-                    $("#contenido_ddlMunicipio").val(id_mun);
-                    $('#contenido_ddlMunicipio').change();
-                }
-            }, 150);
-        });
+        cargarDatosID();
     }
     // Código que se ejecuta cuando se detecta que se ha seleccionado un estado diferente de la lista desplegable
     // Y en la lista de municipios solo carga los municipios que pertenecen a ese estado
     $("#contenido_ddlEstado").change(function () {
         var nombre_estado = $('#contenido_ddlEstado :selected').text();
         var datos = "{ 'estado' : '" + nombre_estado + "'}";
-        cambiarMunicipios(datos);
+        cargarMunicipios(datos);
     });
-     // Función que se dispara cuando se presiona el boton cancelar del formulario y se carga el formulario FrmContenedor.aspx
+    // Función que se dispara cuando se presiona el boton cancelar del formulario y se carga el formulario FrmContenedor.aspx
     $("#btnCancelar").click(function () {
         window.sessionStorage.removeItem("id_empresa");
         window.location.assign("FrmContenedor.aspx");
@@ -370,17 +351,19 @@ $(document).ready(function () {
 // Función que realiza una petición ajax para que ejecute el método web getDatos para saber si la empresa que esta logueada
 // ya ha registrado sus datos de contacto o no
 function cargarDatosEmail(datos) {
+
     $.ajax({
         type: 'POST',
         url: 'ws/WSEmpresas.asmx/getDatos',
         data: datos,
         contentType: 'application/json; utf-8',
         dataType: 'json',
-        success: function (data) {
+        success: function (info) {
             // Si el método web getDatos devuelve que el valor de data.d es mayor a 0 carga los datos de esa empresa en el formulario
             // En caso contrario no entra a la validación y por lo tanto no carga datos porque esa empresa aun no ha registrado sus datos
             // Y se muesta el formulario para que la emprese registre sus datos de contacto
-            if (data.d > 0) {
+
+            if (info.d > 0) {
                 $("#titulo").text("EDITAR DATOS DE CONTACTO");
                 $("#btnRegistrar").val("Editar");
                 $.ajax({
@@ -390,32 +373,31 @@ function cargarDatosEmail(datos) {
                     contentType: 'application/json; utf-8',
                     dataType: 'json',
                     success: function (data) {
-                        let empresa = JSON.parse(data.d);
+                        objEmpresa = JSON.parse(data.d);
                         // Código que carga los datos de la empresa en los campos del formualario
-                        window.sessionStorage.setItem("id_municipio", empresa[0].id_municipio);
-                        $("#contenido_txtEmpresa").val(empresa[0].nombre);
-                        $("#contenido_txtEmail").val(empresa[0].email);
-                        $("#contenido_ddlEstado").val(empresa[0].id_estado);
-                        $('#contenido_ddlEstado').change();
-                        $("#contenido_txtCP").val(empresa[0].codigo_postal);
-                        $("#contenido_txtDomicilio").val(empresa[0].domicilio);
-                        $("#contenido_txtTelefono").val(empresa[0].telefono);
-                        $("#contenido_txtMision").val(empresa[0].mision);
-                        if (empresa[0].giro == "Industrial") {
+                        window.sessionStorage.setItem("id_municipio", objEmpresa[0].id_municipio);
+                        $("#contenido_txtEmpresa").val(objEmpresa[0].nombre);
+                        $("#contenido_txtEmail").val(objEmpresa[0].email);
+                        $("#contenido_txtCP").val(objEmpresa[0].codigo_postal);
+                        $("#contenido_txtDomicilio").val(objEmpresa[0].domicilio);
+                        $("#contenido_txtTelefono").val(objEmpresa[0].telefono);
+                        $("#contenido_txtMision").val(objEmpresa[0].mision);
+                        if (objEmpresa[0].giro == "Industrial") {
                             document.getElementById('contenido_RadioIndustrial').checked = true;
                         }
-                        else if (empresa[0].giro == "Servicios") {
+                        else if (objEmpresa[0].giro == "Servicios") {
                             document.getElementById('contenido_RadioServicios').checked = true;
                         }
-                        else if (empresa[0].giro == "Otro") {
+                        else if (objEmpresa[0].giro == "Otro") {
                             document.getElementById('contenido_RadioOtro').checked = true;
                         }
-                        if (empresa[0].sector == "Público") {
+                        if (objEmpresa[0].sector == "Público") {
                             document.getElementById('contenido_RadioPublico').checked = true;
                         }
-                        else if (empresa[0].sector == "Privado") {
+                        else if (objEmpresa[0].sector == "Privado") {
                             document.getElementById('contenido_RadioPrivado').checked = true;
                         }
+                        cargarEstados();
                     },
                     error: function (jqXHR, textStatus, errorThrown) {
                         if (jqXHR.responseJSON.ExceptionType == "System.Exception") {
@@ -423,11 +405,12 @@ function cargarDatosEmail(datos) {
                             $("#mdlError").modal().show();
                         } else if (jqXHR.responseJSON.ExceptionType == "System.Security.SecurityException") {
                             Response.load("FrmLogin.aspx");
-                        }
+                        } 
                     }
                 });
             } else {
                 window.sessionStorage.setItem("id_municipio", 0);
+                cargarEstados();
             }
         },
         error: function (jqXHR, textStatus, errorThrown) {
@@ -454,32 +437,31 @@ function cargarDatosID() {
         contentType: 'application/json; utf-8',
         dataType: 'json',
         success: function (data) {
-            let empresa = JSON.parse(data.d);
+            objEmpresa = JSON.parse(data.d);
             // Código que carga los datos de la empresa en los campos del formualario
-            window.sessionStorage.setItem("id_municipio", empresa[0].id_municipio);
-            $("#contenido_txtEmpresa").val(empresa[0].nombre);
-            $("#contenido_txtEmail").val(empresa[0].email);
-            $("#contenido_ddlEstado").val(empresa[0].id_estado);
-            $('#contenido_ddlEstado').change();
-            $("#contenido_txtCP").val(empresa[0].codigo_postal);
-            $("#contenido_txtDomicilio").val(empresa[0].domicilio);
-            $("#contenido_txtTelefono").val(empresa[0].telefono);
-            $("#contenido_txtMision").val(empresa[0].mision);
-            if (empresa[0].giro == "Industrial") {
+            window.sessionStorage.setItem("id_municipio", objEmpresa[0].id_municipio);
+            $("#contenido_txtEmpresa").val(objEmpresa[0].nombre);
+            $("#contenido_txtEmail").val(objEmpresa[0].email);
+            $("#contenido_txtCP").val(objEmpresa[0].codigo_postal);
+            $("#contenido_txtDomicilio").val(objEmpresa[0].domicilio);
+            $("#contenido_txtTelefono").val(objEmpresa[0].telefono);
+            $("#contenido_txtMision").val(objEmpresa[0].mision);
+            if (objEmpresa[0].giro == "Industrial") {
                 document.getElementById('contenido_RadioIndustrial').checked = true;
             }
-            else if (empresa[0].giro == "Servicios") {
+            else if (objEmpresa[0].giro == "Servicios") {
                 document.getElementById('contenido_RadioServicios').checked = true;
             }
-            else if (empresa[0].giro == "Otro") {
+            else if (objEmpresa[0].giro == "Otro") {
                 document.getElementById('contenido_RadioOtro').checked = true;
             }
-            if (empresa[0].sector == "Público") {
+            if (objEmpresa[0].sector == "Público") {
                 document.getElementById('contenido_RadioPublico').checked = true;
             }
-            else if (empresa[0].sector == "Privado") {
+            else if (objEmpresa[0].sector == "Privado") {
                 document.getElementById('contenido_RadioPrivado').checked = true;
             }
+            cargarEstados();
         },
         error: function (jqXHR, textStatus, errorThrown) {
             if (jqXHR.responseJSON.ExceptionType == "System.Exception") {
@@ -493,7 +475,7 @@ function cargarDatosID() {
 }
 // Función que hace una petición ajax para que ejecute el método web getMunicipios que muestra los municipios que se encuentran
 // dentro del estado selccionado de la lista desplegable
-function cambiarMunicipios(datos) {
+function cargarMunicipios(datos) {
     $.ajax({
         type: 'POST',
         url: 'ws/WSDatosContacto.asmx/getMunicipios',
@@ -506,6 +488,15 @@ function cambiarMunicipios(datos) {
             for (i = 0; i < municipios.length; i++) {
                 $('#contenido_ddlMunicipio').append('<option value="' + municipios[i].id_municipio + '">' + municipios[i].municipio + '</option>');
             }
+            if (objEmpresa && objEmpresa[0].id_municipio) {
+                $("#contenido_ddlMunicipio").val(objEmpresa[0].id_municipio);
+                //Esta línea borra el atributo id municipio para asegurar que 
+                //la próxima vez que se ejecute el change, ya no esté ligado 
+                //con el municipio original
+                delete objEmpresa[0].id_municipio;
+            } else {
+                $("#contenido_ddlMunicipio").val($("#contenido_ddlMunicipio option:first").val());
+            }
         },
         error: function (jqXHR, textStatus, errorThrown) {
             $("#msgError").text("HA OCURRIDO UN ERROR, POR FAVOR VUELVELO A INTENTAR");
@@ -513,7 +504,42 @@ function cambiarMunicipios(datos) {
         }
     });
 }
-// Función que cierra el modal y muesta el formulario FrmContenedor.aspx
+
+// Función que cierra el modal y muestra el formulario FrmContenedor.aspx
 function cerrar_modal(evento) {
     window.location.assign("FrmContenedor.aspx")
+}
+// Función que llena la lista desplegable de los estados
+function cargarEstados() {
+
+    $.ajax({
+        type: 'POST',
+        url: 'ws/WSDatosContacto.asmx/getEstados',
+        contentType: 'application/json; utf-8',
+        dataType: 'json',
+        success: function (data) {
+
+            let estados = JSON.parse(data.d);
+            $('#contenido_ddlEstado').empty();
+            for (i = 0; i < estados.length; i++) {
+                $('#contenido_ddlEstado').append('<option value="' + estados[i].id_estado + '">' + estados[i].estado + '</option>');
+            }
+
+            if (objEmpresa && objEmpresa[0].id_estado) {
+                $("#contenido_ddlEstado").val(objEmpresa[0].id_estado);
+                var nombre_estado = $('#contenido_ddlEstado :selected').text();
+                var datos = "{ 'estado' : '" + nombre_estado + "'}";
+                cargarMunicipios(datos);
+            } else {
+                $("#contenido_ddlEstado").val($("#contenido_ddlEstado option:first").val());
+                var datos = "{ 'estado' : '" + nombre_estado + "'}";
+                cargarMunicipios(datos);
+            }
+
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+            $("#msgError").text("HA OCURRIDO UN ERROR, POR FAVOR VUELVELO A INTENTAR");
+            $("#mdlError").modal().show();
+        }
+    });
 }

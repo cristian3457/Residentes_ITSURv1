@@ -1,9 +1,9 @@
 ﻿// función inicial de javascript
 $(document).ready(function () {
-    $("#btnRegistrar").click(function () {
-        window.sessionStorage.removeItem("id_empresa");
-        $("#divContenido").load("FrmRegistrarDatos.aspx");
-    });
+    //$("#btnRegistrar").click(function () {
+    //    window.sessionStorage.removeItem("id_empresa");
+    //    $("#divContenido").load("FrmRegistrarDatos.aspx");
+    //});
     // Variable que almacena el id de la tabla que cargara los datos de contacto de las empresas registradas
     let tabla = $('#grvLista');
     // Función que sirve para limpiar todo lo que tenga la tabla
@@ -11,7 +11,7 @@ $(document).ready(function () {
     // Función que carga los datos de contacto de las empresas registradas
     cargarDatos();
     $("#btnAceptar").unbind("click");
-    // Cuando se presiona el bton del modal con el id btnAceptar se borra lo que tenga la tabla y se vuelve a llenar al llamar a la función cargarDatos
+    // Cuando se presiona el boton del modal con el id btnAceptar se borra lo que tenga la tabla y se vuelve a llenar al llamar a la función cargarDatos
     $("#btnAceptar").click(function () {
         let tabla = $('#grvLista');
         tabla.empty();

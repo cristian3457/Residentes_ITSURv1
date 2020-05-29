@@ -152,9 +152,9 @@ namespace BackEnd.Datos
                 List<Ofertas> lista = new List<Ofertas>();
 
                 MySqlCommand sentencia = new MySqlCommand();
-                sentencia.CommandText = "SELECT e.nombre,e.domicilio,e.codigo_postal, e.email,e.telefono,m.municipio,es.estado, o.perfil, o.sueldo,o.solicito," +
-                                "o.requisitos,o.actividades FROM empresas e, municipios m, estados es, ofertas o, carreras c WHERE m.id_estado = es.id_estado AND " +
-                                "e.id_municipio = m.id_municipio AND o.perfil = c.carrera AND m.id_municipio = @id_municipio;";
+                sentencia.CommandText = "SELECT e.nombre,e.domicilio,e.codigo_postal, e.email,e.telefono,m.municipio,es.estado, o.perfil, o.sueldo,o.solicito,"+
+                "o.requisitos,o.actividades FROM empresas e, municipios m, estados es, ofertas o, carreras c WHERE e.id_estado = m.id_estado AND "+
+                "e.id_municipio = m.id_municipio AND e.id_estado = es.id_estado AND e.email = o.email AND m.id_estado = es.id_estado AND m.id_municipio = @id_municipio AND o.carrera = c.carrera;";
                 sentencia.Parameters.AddWithValue("@id_municipio", id_municipio);
                 DataTable tabla = Conexion.ejecutarConsulta(sentencia);
 
