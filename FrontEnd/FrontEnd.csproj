@@ -148,6 +148,8 @@
     <Content Include="js\FrmCambiarPassword.js" />
     <Content Include="js\FrmCrearUsuarios.js" />
     <Content Include="js\FrmGestionarUsuarios.js" />
+    <Content Include="js\FrmLogin.js" />
+    <Content Include="js\FrmPresentarOfertas.js" />
     <Content Include="js\FrmPrincipal.js" />
     <Content Include="js\FrmPrincipalContenedor.js" />
     <Content Include="js\FrmRegistrarDatos.js" />

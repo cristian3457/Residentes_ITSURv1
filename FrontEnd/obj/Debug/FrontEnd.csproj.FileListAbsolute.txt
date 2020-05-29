@@ -348,3 +348,14 @@ C:\Users\RamosHtvs\Desktop\web II preyecto recidentes\Residentes_ITSURv1\FrontEn
 C:\Users\RamosHtvs\Desktop\web II preyecto recidentes\Residentes_ITSURv1\FrontEnd\obj\Debug\FrontEnd.csproj.CopyComplete
 C:\Users\RamosHtvs\Desktop\web II preyecto recidentes\Residentes_ITSURv1\FrontEnd\obj\Debug\FrontEnd.dll
 C:\Users\RamosHtvs\Desktop\web II preyecto recidentes\Residentes_ITSURv1\FrontEnd\obj\Debug\FrontEnd.pdb
+C:\Users\TEMP.Cristian_FN\Documents\GitHub\Residentes_ITSUR\Residentes_ITSURv1\Residentes_ITSURv1\FrontEnd\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+C:\Users\TEMP.Cristian_FN\Documents\GitHub\Residentes_ITSUR\Residentes_ITSURv1\Residentes_ITSURv1\FrontEnd\bin\roslyn\Microsoft.CodeAnalysis.dll
+C:\Users\TEMP.Cristian_FN\Documents\GitHub\Residentes_ITSUR\Residentes_ITSURv1\Residentes_ITSURv1\FrontEnd\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+C:\Users\TEMP.Cristian_FN\Documents\GitHub\Residentes_ITSUR\Residentes_ITSURv1\Residentes_ITSURv1\FrontEnd\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+C:\Users\TEMP.Cristian_FN\Documents\GitHub\Residentes_ITSUR\Residentes_ITSURv1\Residentes_ITSURv1\FrontEnd\bin\roslyn\System.Collections.Immutable.dll
+C:\Users\TEMP.Cristian_FN\Documents\GitHub\Residentes_ITSUR\Residentes_ITSURv1\Residentes_ITSURv1\FrontEnd\bin\roslyn\System.IO.FileSystem.dll
+C:\Users\TEMP.Cristian_FN\Documents\GitHub\Residentes_ITSUR\Residentes_ITSURv1\Residentes_ITSURv1\FrontEnd\bin\roslyn\System.IO.FileSystem.Primitives.dll
+C:\Users\TEMP.Cristian_FN\Documents\GitHub\Residentes_ITSUR\Residentes_ITSURv1\Residentes_ITSURv1\FrontEnd\bin\roslyn\System.Reflection.Metadata.dll
+C:\Users\TEMP.Cristian_FN\Documents\GitHub\Residentes_ITSUR\Residentes_ITSURv1\Residentes_ITSURv1\FrontEnd\bin\roslyn\System.Security.Cryptography.Primitives.dll
+C:\Users\TEMP.Cristian_FN\Documents\GitHub\Residentes_ITSUR\Residentes_ITSURv1\Residentes_ITSURv1\FrontEnd\bin\roslyn\System.ValueTuple.dll
+C:\Users\TEMP.Cristian_FN\Documents\GitHub\Residentes_ITSUR\Residentes_ITSURv1\Residentes_ITSURv1\FrontEnd\bin\roslyn\VBCSCompiler.exe

@@ -1,4 +1,17 @@
-﻿// función que genera los datos de la tabla con el id listaUsuarios con los datos de los usuarios que estan registrados
+﻿// Función inicial que cuando se carga, muestra la tabla con los usuarios registrados
+$(document).ready(function () {
+    let tabla = $('#listaUsuarios');
+    tabla.empty();
+    cargarDatos();
+    // Función que se dispara cuando se presiona el boton Aceptar del modal cuando se elimino un usuario, se limpian los datos anteriores
+    // de la tabla y se vuelven a mostrar pero ya sin el usuario que se acaba de eliminar
+    $("#btnAceptar").click(function () {
+        let tabla = $('#listaUsuarios');
+        tabla.empty();
+        cargarDatos();
+    });
+});
+// función que genera los datos de la tabla con el id listaUsuarios con los datos de los usuarios que estan registrados
 function cargarDatos() {
     let tabla = $('#listaUsuarios');
     tabla.append("<thead><tr><th> Código</th><th> Email</th><th>Editar Datos</th><th>Eliminar</th></tr><thead/>");
@@ -26,7 +39,11 @@ function cargarDatos() {
             }
         }
     });
-
+}
+// Función que se ejecuta cuando se presiona el boton Registrar del formulario y llena el divContenido con el formulario FrmCrearUsuarios.aspx
+function Registrar() {
+    window.sessionStorage.removeItem("id_usuario");
+    $('#divContenido').load('FrmCrearUsuarios.aspx');
 }
 // Función que se dispara cuando se presiona el boton eliminar de la tabla
 function Eliminar(btn) {

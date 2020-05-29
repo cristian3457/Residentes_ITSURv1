@@ -1,9 +1,5 @@
 ﻿// función inicial de javascript
 $(document).ready(function () {
-    //$("#btnRegistrar").click(function () {
-    //    window.sessionStorage.removeItem("id_empresa");
-    //    $("#divContenido").load("FrmRegistrarDatos.aspx");
-    //});
     // Variable que almacena el id de la tabla que cargara los datos de contacto de las empresas registradas
     let tabla = $('#grvLista');
     // Función que sirve para limpiar todo lo que tenga la tabla
@@ -80,4 +76,25 @@ function eliminar(id) {
             }
         }
     });
+}
+//Función que se ejecuta cuando se presiona el boton Eliminar de un registro de la tabla
+function Eliminar(btn) {
+    $('#mdlConfirmar').modal('show');
+    let id = $(btn).closest("tr").children().first().text();
+    $("#confirmarEliminar").unbind("click");
+    $("#confirmarEliminar").click(function () {
+        eliminar(id);
+    });
+}
+//Función que se ejecuta cuando se presiona el boton Editar de un registro de la tabla
+function Editar(btn) {
+    let id = $(btn).closest("tr").children().first().text();
+    window.sessionStorage.removeItem("id_empresa");
+    window.sessionStorage.setItem("id_empresa", id);
+    $('#divContenido').load('FrmRegistrarDatos.aspx');
+}
+// Función que se ejecuta cuando se presiona el boton Registrar 
+function Registrar() {
+    window.sessionStorage.removeItem("id_empresa");
+    $("#divContenido").load("FrmRegistrarDatos.aspx");
 }

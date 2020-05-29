@@ -12,17 +12,6 @@ namespace FrontEnd
         protected void Page_Load(object sender, EventArgs e)
         {
             txtEmailUsuario.Value = "" + Session["email_usuario"];
-            //if (!IsPostBack)
-            //{
-            //    ddlEstado.DataSource = new EstadosDao().getAll();
-            //    ddlEstado.DataValueField = "id_estado";
-            //    ddlEstado.DataTextField = "estado";
-            //    ddlEstado.DataBind();
-            //    ddlMunicipio.DataSource = new MunicipiosDao().getAll("Aguascalientes");
-            //    ddlMunicipio.DataValueField = "id_municipio";
-            //    ddlMunicipio.DataTextField = "municipio";
-            //    ddlMunicipio.DataBind();
-            //}
         }
     }
 }

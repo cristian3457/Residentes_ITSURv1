@@ -105,27 +105,5 @@
 <asp:Content ID="Content3" ContentPlaceHolderID="scripts" runat="server">
     <script src="js/datatables.js"></script>
     <script src="js/FrmPrincipal.js"></script>
-    
-    <script>
-        function Eliminar(btn) {
-            $('#mdlConfirmar').modal('show');
-            let id = $(btn).closest("tr").children().first().text();
-            $("#confirmarEliminar").unbind("click");
-            $("#confirmarEliminar").click(function () {
-                eliminar(id);
-            });
-        }
-        function Editar(btn) {
-            let id = $(btn).closest("tr").children().first().text();
-            window.sessionStorage.removeItem("id_empresa");
-            window.sessionStorage.setItem("id_empresa",id);
-            $('#divContenido').load('FrmRegistrarDatos.aspx');
-        }
-        function Registrar() {
-        window.sessionStorage.removeItem("id_empresa");
-        $("#divContenido").load("FrmRegistrarDatos.aspx");
-        }
-        
-    </script>
 </asp:Content>
 
