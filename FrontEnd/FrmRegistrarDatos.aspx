@@ -116,12 +116,12 @@
                     <label for="txtTelefono" class="ml-3 texto_etiquetas">Teléfono</label>
                     <asp:TextBox ID="txtTelefono" placeholder="445 445 6789" type="tel" autocomplete="off" class="form-control col-md-8" runat="server" required></asp:TextBox>
                 </div>
-                <div class="form-group col-md-6 pl-4">
+                <div class="form-group col-md-6 pl-4 pr-3">
                     <label for="txtMision" class="ml-3 texto_etiquetas">Misión</label>
                     <asp:TextBox ID="txtMision" class="col-md-10" placeholder="Misión de la empresa" required TextMode="MultiLine" runat="server"></asp:TextBox>
                 </div>
             </div>
-            <div class="form-row justify-content-center mt-3 mb-5">
+            <div class="form-row justify-content-center mt-3 pb-3">
                 <input id="btnRegistrar" class="btn btn-success" type="button" value="Registrar" />
                 <input id="btnCancelar" class="btn btn-danger ml-5" type="button" value="Cancelar" />
             </div>

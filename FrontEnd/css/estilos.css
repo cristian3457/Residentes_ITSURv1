@@ -56,10 +56,10 @@ input,select{
 #contenido_btnBuscar{
 	padding: 10px!important;
 }
-.formulario{
+.formulario {
     background-color: #fff;
-    width: 1000px!important;
-    margin: 20px auto!important;
+    width: 1000px !important;
+    margin: 20px auto 120px auto !important;
 }
 .text-left.lbl{
     margin-left:-100px !important;
