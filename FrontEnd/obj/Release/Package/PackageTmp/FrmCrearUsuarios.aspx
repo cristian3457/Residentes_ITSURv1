@@ -119,7 +119,7 @@
         else { Response.Redirect("FrmLogin.aspx"); }%>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="scripts" runat="server">
-    <script src="js/bootstrapValidator.js"></script>
-    <script src="js/FrmCrearUsuarios.js"></script>
+    <script src="js/bootstrapValidator.min.js"></script>
+    <script src="js/FrmCrearUsuarios.min.js"></script>
 </asp:Content>
 

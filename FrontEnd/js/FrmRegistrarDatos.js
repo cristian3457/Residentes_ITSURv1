@@ -133,7 +133,7 @@ $(document).ready(function () {
                         }
                     });
                 } // Entra a esta validación si el valor de la variable id es igual a null y se van a registrar los datos de la
-                // empresa, en esta validación es cuando la empresa se logueo y va registrar sus propios datos
+                // empresa, en esta validación es cuando la empresa se logueo y va editar sus propios datos
                 else if (id == null) {
                     var email_usuario = $("#contenido_txtEmailUsuario").val();
                     // Se arma el objeto json que sera pasado a la petición ajax

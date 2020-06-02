@@ -7,6 +7,7 @@ $(document).ready(function () {
     var contraseña = txtContraseña.value.trim();
     var confirmar_contraseña = txtConfirmarContraseña.value.trim();
     // Función que se dispara cuando el usuario presiona el boton con el id btncambiar que tiene el texto Aceptar
+    
     $("#btncambiar").click(function () {
         // Este código pregunta si se el formulario ha cumplido con los requisitos de cada campo o no
         $("#FrmCambiarPassword").data('bootstrapValidator').validate();

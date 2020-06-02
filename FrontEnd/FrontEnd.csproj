@@ -139,9 +139,7 @@
     <Content Include="imagenes\mecanico.svg" />
     <Content Include="imagenes\tierra.svg" />
     <Content Include="js\bootstrap.bundle.js" />
-    <Content Include="js\bootstrap.bundle.min.js" />
     <Content Include="js\bootstrap.js" />
-    <Content Include="js\bootstrap.min.js" />
     <Content Include="js\bootstrapValidator.js" />
     <Content Include="js\datatables.js" />
     <Content Include="js\FrmBuscarResidencias.js" />
@@ -305,13 +303,12 @@
     <Content Include="css\bootstrap.css.map" />
     <Content Include="css\bootstrap.min.css.map" />
     <Content Include="js\bootstrap.bundle.js.map" />
-    <Content Include="js\bootstrap.bundle.min.js.map" />
     <Content Include="js\bootstrap.js.map" />
-    <Content Include="js\bootstrap.min.js.map" />
     <None Include="packages.config" />
     <Content Include="Site1.Master" />
     <Content Include="Site2.Master" />
     <None Include="Properties\PublishProfiles\CustomProfile.pubxml" />
+    <None Include="Properties\PublishProfiles\CustomProfile1.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

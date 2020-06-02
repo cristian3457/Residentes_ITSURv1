@@ -10,13 +10,13 @@ edite el archivo MSBuild. Visite https://go.microsoft.com/fwlink/?LinkID=208121 
   </PropertyGroup>
   <ItemGroup>
     <File Include="bin/BackEnd.exe">
-      <publishTime>05/27/2020 15:54:08</publishTime>
+      <publishTime>05/30/2020 10:37:13</publishTime>
     </File>
     <File Include="bin/BackEnd.exe.config">
       <publishTime>05/24/2020 10:37:33</publishTime>
     </File>
     <File Include="bin/BackEnd.pdb">
-      <publishTime>05/27/2020 15:54:08</publishTime>
+      <publishTime>05/30/2020 10:37:13</publishTime>
     </File>
     <File Include="bin/de/Microsoft.ReportViewer.Common.resources.dll">
       <publishTime>02/25/2020 23:35:32</publishTime>
@@ -94,10 +94,10 @@ edite el archivo MSBuild. Visite https://go.microsoft.com/fwlink/?LinkID=208121 
       <publishTime>02/25/2020 23:35:32</publishTime>
     </File>
     <File Include="bin/FrontEnd.dll">
-      <publishTime>05/27/2020 15:54:11</publishTime>
+      <publishTime>05/30/2020 10:37:14</publishTime>
     </File>
     <File Include="bin/FrontEnd.pdb">
-      <publishTime>05/27/2020 15:54:11</publishTime>
+      <publishTime>05/30/2020 10:37:14</publishTime>
     </File>
     <File Include="bin/it/Microsoft.ReportViewer.Common.resources.dll">
       <publishTime>02/25/2020 23:35:32</publishTime>
@@ -541,46 +541,46 @@ edite el archivo MSBuild. Visite https://go.microsoft.com/fwlink/?LinkID=208121 
       <publishTime>05/24/2020 10:37:34</publishTime>
     </File>
     <File Include="css/estilos.css">
-      <publishTime>05/24/2020 10:37:34</publishTime>
+      <publishTime>05/29/2020 19:30:12</publishTime>
     </File>
     <File Include="css/header_footer.css">
       <publishTime>05/24/2020 10:37:34</publishTime>
     </File>
     <File Include="FrmBuscarResidencias.aspx">
-      <publishTime>05/24/2020 14:00:56</publishTime>
+      <publishTime>05/30/2020 10:22:04</publishTime>
     </File>
     <File Include="FrmCambiarPassword.aspx">
-      <publishTime>05/24/2020 10:37:33</publishTime>
+      <publishTime>05/30/2020 10:22:43</publishTime>
     </File>
     <File Include="FrmContenedor.aspx">
       <publishTime>05/24/2020 10:37:33</publishTime>
     </File>
     <File Include="FrmCrearUsuarios.aspx">
-      <publishTime>05/24/2020 10:37:33</publishTime>
+      <publishTime>05/30/2020 10:23:17</publishTime>
     </File>
     <File Include="FrmGenerarReporte.aspx">
-      <publishTime>05/24/2020 10:37:33</publishTime>
+      <publishTime>05/30/2020 10:23:31</publishTime>
     </File>
     <File Include="FrmGestionarUsuarios.aspx">
-      <publishTime>05/24/2020 10:37:33</publishTime>
+      <publishTime>05/30/2020 10:23:46</publishTime>
     </File>
     <File Include="FrmLogin.aspx">
-      <publishTime>05/24/2020 10:37:33</publishTime>
+      <publishTime>05/30/2020 10:24:02</publishTime>
     </File>
     <File Include="FrmNosotros.aspx">
-      <publishTime>05/24/2020 10:37:33</publishTime>
+      <publishTime>05/30/2020 10:24:16</publishTime>
     </File>
     <File Include="FrmPresentarOfertas.aspx">
-      <publishTime>05/24/2020 10:37:33</publishTime>
+      <publishTime>05/30/2020 10:24:28</publishTime>
     </File>
     <File Include="FrmPrincipal.aspx">
-      <publishTime>05/24/2020 10:37:33</publishTime>
+      <publishTime>05/30/2020 10:24:39</publishTime>
     </File>
     <File Include="FrmRegistrarDatos.aspx">
-      <publishTime>05/24/2020 14:01:42</publishTime>
+      <publishTime>05/30/2020 10:24:55</publishTime>
     </File>
     <File Include="FrmSolicitarResidentes.aspx">
-      <publishTime>05/24/2020 10:37:33</publishTime>
+      <publishTime>05/30/2020 10:25:09</publishTime>
     </File>
     <File Include="imagenes/93687087_834284687068941_4449219839550029824_n.jpg">
       <publishTime>05/24/2020 10:37:34</publishTime>
@@ -642,41 +642,80 @@ edite el archivo MSBuild. Visite https://go.microsoft.com/fwlink/?LinkID=208121 
     <File Include="js/bootstrapValidator.js">
       <publishTime>05/24/2020 10:37:34</publishTime>
     </File>
+    <File Include="js/bootstrapValidator.min.js">
+      <publishTime>05/30/2020 10:00:55</publishTime>
+    </File>
     <File Include="js/datatables.js">
       <publishTime>05/24/2020 10:37:34</publishTime>
+    </File>
+    <File Include="js/datatables.min.js">
+      <publishTime>05/30/2020 10:01:51</publishTime>
     </File>
     <File Include="js/FrmBuscarResidencias.js">
       <publishTime>05/24/2020 13:57:55</publishTime>
     </File>
+    <File Include="js/FrmBuscarResidencias.min.js">
+      <publishTime>05/30/2020 09:43:46</publishTime>
+    </File>
     <File Include="js/FrmCambiarPassword.js">
       <publishTime>05/24/2020 10:37:34</publishTime>
+    </File>
+    <File Include="js/FrmCambiarPassword.min.js">
+      <publishTime>05/30/2020 09:45:15</publishTime>
     </File>
     <File Include="js/FrmCrearUsuarios.js">
       <publishTime>05/24/2020 10:37:34</publishTime>
     </File>
+    <File Include="js/FrmCrearUsuarios.min.js">
+      <publishTime>05/30/2020 09:46:14</publishTime>
+    </File>
     <File Include="js/FrmGestionarUsuarios.js">
       <publishTime>05/24/2020 10:37:34</publishTime>
+    </File>
+    <File Include="js/FrmGestionarUsuarios.min.js">
+      <publishTime>05/30/2020 09:52:06</publishTime>
+    </File>
+    <File Include="js/FrmLogin.min.js">
+      <publishTime>05/30/2020 09:52:58</publishTime>
+    </File>
+    <File Include="js/FrmPresentarOfertas.min.js">
+      <publishTime>05/30/2020 09:53:54</publishTime>
     </File>
     <File Include="js/FrmPrincipal.js">
       <publishTime>05/26/2020 12:49:01</publishTime>
     </File>
+    <File Include="js/FrmPrincipal.min.js">
+      <publishTime>05/30/2020 09:54:49</publishTime>
+    </File>
     <File Include="js/FrmPrincipalContenedor.js">
       <publishTime>05/24/2020 10:37:34</publishTime>
+    </File>
+    <File Include="js/FrmPrincipalContenedor.min.js">
+      <publishTime>05/30/2020 09:55:44</publishTime>
     </File>
     <File Include="js/FrmRegistrarDatos.js">
       <publishTime>05/27/2020 15:20:10</publishTime>
     </File>
+    <File Include="js/FrmRegistrarDatos.min.js">
+      <publishTime>05/30/2020 09:56:49</publishTime>
+    </File>
     <File Include="js/FrmSolicitarResidentes.js">
       <publishTime>05/24/2020 14:30:40</publishTime>
+    </File>
+    <File Include="js/FrmSolicitarResidentes.min.js">
+      <publishTime>05/30/2020 09:57:40</publishTime>
     </File>
     <File Include="js/jquery-3.4.1.js">
       <publishTime>05/24/2020 10:37:34</publishTime>
     </File>
+    <File Include="js/jquery-3.4.1.min.js">
+      <publishTime>05/30/2020 09:59:50</publishTime>
+    </File>
     <File Include="Site1.Master">
-      <publishTime>05/24/2020 10:37:33</publishTime>
+      <publishTime>05/30/2020 10:25:29</publishTime>
     </File>
     <File Include="Site2.Master">
-      <publishTime>05/24/2020 10:37:33</publishTime>
+      <publishTime>05/30/2020 10:25:41</publishTime>
     </File>
     <File Include="SqlServerTypes/readme.htm">
       <publishTime>05/24/2020 10:37:33</publishTime>

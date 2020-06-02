@@ -4,29 +4,17 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>RESIDENTES ITSUR </title>
-    <link rel="stylesheet" href="css/bootstrap.min.css"/>
-    <link rel="stylesheet" href="css/estilos.css"/>
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/estilos.css" />
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
 </head>
-
 <body>
-    <br />
-    <br />
-    <br />
-
-        <asp:ContentPlaceHolder ID="contenido" runat="server"> 
-            <br />
-            <br />
-            <br />
-        </asp:ContentPlaceHolder>
-    <script src="js/jquery-3.4.1.js"></script>
-    <script src="js/bootstrap.js"></script>
-    <asp:ContentPlaceHolder ID="scripts" runat="server">
-    </asp:ContentPlaceHolder>
-    <br />
-    <br />
+    <asp:ContentPlaceHolder ID="contenido" runat="server">  </asp:ContentPlaceHolder>
+    <script src="js/jquery-3.4.1.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <asp:ContentPlaceHolder ID="scripts" runat="server"></asp:ContentPlaceHolder>
 </body>
 </html>
